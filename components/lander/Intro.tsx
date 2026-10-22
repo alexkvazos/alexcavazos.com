@@ -37,6 +37,13 @@ export default function Intro({ lines, skip }: { lines: BootLine[]; skip: string
   const [progress, setProgress] = useState<Progress | null>(null);
   const [leaving, setLeaving] = useState(false);
   const runId = useRef(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // On short screens the session can outgrow the viewport: keep the newest line in view.
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [progress]);
 
   const finish = useCallback(async (id: number) => {
     if (id !== runId.current) return;
@@ -79,7 +86,7 @@ export default function Intro({ lines, skip }: { lines: BootLine[]; skip: string
         setProgress({ line: i, typed: text.length, phase: "running" });
         await sleep(TIMING.running);
         setProgress({ line: i, typed: text.length, phase: "output" });
-        await sleep(TIMING.afterOutput);
+        await sleep(TIMING.afterOutput + (l.output.length - 1) * 55);
       } else {
         setProgress({ line: i, typed: text.length, phase: "output" });
         await sleep(TIMING.hold);
@@ -129,7 +136,7 @@ export default function Intro({ lines, skip }: { lines: BootLine[]; skip: string
         <div className="py-6 text-[13px] text-subtle">
           alex@cavazos <span className="text-muted">~</span>
         </div>
-        <div className="flex-1 space-y-3 pt-6 sm:pt-10">
+        <div ref={scrollRef} className="no-scrollbar min-h-0 flex-1 space-y-3 overflow-y-auto pt-6 sm:pt-10">
           {(!p || p.line < 0) && (
             <p>
               <span className="mr-2 text-accent">&gt;</span>
@@ -162,14 +169,19 @@ export default function Intro({ lines, skip }: { lines: BootLine[]; skip: string
                       <span className="text-muted">({l.args.slice(0, typed)}</span>
                       {phase === "typing" ? <Caret /> : <span className="text-muted">)</span>}
                     </p>
-                    {phase === "output" && (
-                      <p className="grid grid-cols-[1.5rem_minmax(0,1fr)] text-subtle">
-                        <span className="pl-1">⎿</span>
-                        <span className={`break-words ${l.output.startsWith("✓") ? "text-ok" : ""}`}>
-                          {l.output}
-                        </span>
-                      </p>
-                    )}
+                    {phase === "output" &&
+                      l.output.map((o, j) => (
+                        <p
+                          key={j}
+                          className="intro-out grid grid-cols-[1.5rem_minmax(0,1fr)] text-subtle"
+                          style={{ animationDelay: `${j * 55}ms` }}
+                        >
+                          <span className="pl-1">{j === 0 ? "⎿" : ""}</span>
+                          <span className={`break-words whitespace-pre-wrap ${o.startsWith("✓") ? "text-ok" : ""}`}>
+                            {o}
+                          </span>
+                        </p>
+                      ))}
                   </div>
                 );
               return (

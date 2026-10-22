@@ -44,6 +44,10 @@ html.intro .intro-overlay {
   }
 }
 
+.intro-out {
+  animation: intro-done-in 0.25s ease-out both;
+}
+
 .intro-done {
   animation: intro-done-in 0.3s ease-out both;
 }
@@ -71,4 +75,11 @@ html.intro .intro-overlay {
   :root:not([data-theme="dark"]) .theme-toggle .icon-moon {
     display: none;
   }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

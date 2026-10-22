@@ -19,7 +19,7 @@ export type Company = {
 /** Intro: a coding-agent session that builds and ships this page, then fades into it. */
 export type BootLine =
   | { kind: "user"; text: string }
-  | { kind: "tool"; tool: string; args: string; output: string }
+  | { kind: "tool"; tool: string; args: string; output: string[] }
   | { kind: "done"; text: string };
 
 export type EarlierRole = { title: string; company?: string; period: string };
@@ -90,10 +90,28 @@ export const lander: LanderContent = {
     replay: "replay intro",
     lines: [
       { kind: "user", text: "build alexcavazos.com and ship it" },
-      { kind: "tool", tool: "Read", args: "content/work.md", output: "Octagon Labs · Turboship · Terpa Solutions" },
-      { kind: "tool", tool: "Write", args: "app/page.tsx", output: "whoami, work, notes, stack, cv, contact" },
-      { kind: "tool", tool: "Bash", args: "npm run build", output: "✓ compiled, 4 pages" },
-      { kind: "tool", tool: "Bash", args: "octagon deploy --prod", output: "✓ alexcavazos.com" },
+      {
+        kind: "tool",
+        tool: "Read",
+        args: "content/work.md",
+        output: [
+          "octagon-labs/",
+          "├─ hq",
+          "├─ sales-agents",
+          "├─ infra",
+          "├─ eventkit",
+          "├─ fankit",
+          "└─ timbra-chat",
+          "turboship/",
+          "├─ carrier",
+          "└─ wms",
+          "terpa/",
+          "└─ terminal-platform",
+        ],
+      },
+      { kind: "tool", tool: "Write", args: "app/page.tsx", output: ["whoami, work, notes, stack, cv, contact"] },
+      { kind: "tool", tool: "Bash", args: "npm run build", output: ["✓ compiled"] },
+      { kind: "tool", tool: "Bash", args: "octagon deploy --prod", output: ["✓ alexcavazos.com"] },
       { kind: "done", text: "Website is ready" },
     ],
   },
@@ -200,7 +218,7 @@ export const lander: LanderContent = {
       "I like owning the whole thing, from the first commit to keeping it running.",
       "I write software with coding agents every day.",
       "I build agents that operate: they find leads, talk to customers, issue invoices, suggest improvements and run real work in production.",
-      "I prefer lean infrastructure and architecture with a purpose over trendy, shiny patterns.",
+      "I build lean infrastructure and purposeful architecture, not whatever is trending.",
     ],
   },
   stack: { cmd: "cat stack", lines: stackLines },
