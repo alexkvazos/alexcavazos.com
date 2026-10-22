@@ -4,82 +4,70 @@
  * Design tokens. Dark (terminal) is the default; light is "warm paper".
  *   - OS light preference applies unless the user forced dark (data-theme="dark").
  *   - data-theme="light" forces light regardless of OS.
- * Text tokens (fg, muted, subtle, accent, info, success, danger) meet WCAG AA (>= 4.5:1)
- * on --bg, --surface and --surface-2 in both themes; accent-fg on accent fill too.
+ * Nearly monochrome: fg / muted / subtle carry the hierarchy; accent is only for the prompt sign.
+ * Text tokens meet WCAG AA (>= 4.5:1) on --bg in both themes.
  * --border / --border-strong are decorative only (not for text).
  */
 :root {
   color-scheme: dark;
 
-  --bg: #0a0a0b;
-  --surface: #111113;
-  --surface-2: #18181b;
-  --border: #222226;
-  --border-strong: #34343a;
+  --bg: #0b0b0c;
+  --surface: #111112;
+  --surface-2: #18181a;
+  --border: #232326;
+  --border-strong: #3a3a3f;
 
-  --fg: #e7e7ea; /* 16.0:1 on bg */
-  --muted: #8a8a93; /* 5.8:1 on bg */
-  --subtle: #808089; /* 5.1:1 on bg, 4.5:1 on surface-2 */
+  --fg: #e4e4e7; /* 15.9:1 on bg */
+  --muted: #a1a1aa; /* 7.9:1 */
+  --subtle: #7c7c85; /* 4.8:1 */
 
-  --accent: #ffb224; /* amber, 11.0:1 on bg */
-  --accent-fg: #0a0a0b; /* text on accent fill */
-  --accent-soft: rgb(255 178 36 / 0.12);
-  --info: #5ccfe6; /* tool / info cyan, 10.9:1 */
-  --success: #7ee787; /* 12.9:1 */
-  --danger: #ff6b6b; /* 7.1:1 */
+  --accent: #c9a46a; /* quiet sand, only for the prompt sign */
+  --accent-fg: #0b0b0c;
 
-  --selection: rgb(255 178 36 / 0.28);
-  --ring: #ffb224;
+  --selection: rgb(228 228 231 / 0.18);
+  --ring: #a1a1aa;
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     color-scheme: light;
 
-    --bg: #fbfaf7;
-    --surface: #f3f1ea;
-    --surface-2: #ebe8df;
-    --border: #dedad0;
-    --border-strong: #c9c4b6;
+    --bg: #fafaf8;
+    --surface: #f2f2ef;
+    --surface-2: #eaeae6;
+    --border: #e2e2dd;
+    --border-strong: #c8c8c0;
 
-    --fg: #141414; /* 17.7:1 on bg */
-    --muted: #5c5b57; /* 6.5:1 */
-    --subtle: #6a6863; /* 5.3:1 on bg, 4.5:1 on surface-2 */
+    --fg: #18181b; /* 17:1 */
+    --muted: #52525b; /* 7.6:1 */
+    --subtle: #6b6b73; /* 5.1:1 */
 
-    --accent: #a14f00; /* burnt amber, 5.5:1 on bg */
-    --accent-fg: #fbfaf7;
-    --accent-soft: rgb(161 79 0 / 0.1);
-    --info: #0b6477; /* 6.5:1 */
-    --success: #1b6e2e; /* 6.1:1 */
-    --danger: #b4231f; /* 6.3:1 */
+    --accent: #8a6a2f; /* 5.0:1 */
+    --accent-fg: #fafaf8;
 
-    --selection: rgb(161 79 0 / 0.2);
-    --ring: #a14f00;
+    --selection: rgb(24 24 27 / 0.12);
+    --ring: #52525b;
   }
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --bg: #fbfaf7;
-  --surface: #f3f1ea;
-  --surface-2: #ebe8df;
-  --border: #dedad0;
-  --border-strong: #c9c4b6;
+  --bg: #fafaf8;
+  --surface: #f2f2ef;
+  --surface-2: #eaeae6;
+  --border: #e2e2dd;
+  --border-strong: #c8c8c0;
 
-  --fg: #141414;
-  --muted: #5c5b57;
-  --subtle: #6a6863;
+  --fg: #18181b;
+  --muted: #52525b;
+  --subtle: #6b6b73;
 
-  --accent: #a14f00;
-  --accent-fg: #fbfaf7;
-  --accent-soft: rgb(161 79 0 / 0.1);
-  --info: #0b6477;
-  --success: #1b6e2e;
-  --danger: #b4231f;
+  --accent: #8a6a2f;
+  --accent-fg: #fafaf8;
 
-  --selection: rgb(161 79 0 / 0.2);
-  --ring: #a14f00;
+  --selection: rgb(24 24 27 / 0.12);
+  --ring: #52525b;
 }
 
 /* Tailwind utilities: bg-bg, bg-surface, text-fg, text-muted, text-accent, border-border, font-mono, font-sans... */
@@ -94,10 +82,6 @@
   --color-subtle: var(--subtle);
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
-  --color-accent-soft: var(--accent-soft);
-  --color-info: var(--info);
-  --color-success: var(--success);
-  --color-danger: var(--danger);
   --color-ring: var(--ring);
 }
 

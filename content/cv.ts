@@ -1,6 +1,6 @@
 // CV content (EN / ES). Every claim is sourced from content/facts.md.
 // Formal register, one US-Letter page per language at ~9.5pt.
-// Copy was tightened by the CV agent so each language fits exactly one page.
+// No vanity metrics (commits, lines, tests, tokens) and no product status labels.
 
 export type Locale = "en" | "es"
 
@@ -18,7 +18,6 @@ export type CvContent = {
   labels: {
     summary: string
     experience: string
-    selected: string
     skills: string
     languages: string
     earlier: string
@@ -34,7 +33,6 @@ export type CvContent = {
   }
   summary: string
   experience: CvRole[]
-  selected: { name: string; line: string }[]
   skills: { group: string; items: string }[]
   languages: string
   earlier?: string
@@ -54,12 +52,11 @@ const en: CvContent = {
   meta: {
     title: "CV — Alex Cavazos",
     description:
-      "Curriculum vitae of Alex Cavazos, technical co-founder and CTO in Monterrey, Mexico: products from first commit to production, infrastructure, payments and AI agents.",
+      "Curriculum vitae of Alex Cavazos, technical co-founder and CTO in Monterrey, Mexico.",
   },
   labels: {
     summary: "Summary",
     experience: "Experience",
-    selected: "Selected Products",
     skills: "Skills",
     languages: "Languages",
     earlier: "Earlier",
@@ -69,49 +66,49 @@ const en: CvContent = {
   },
   header: {
     name: "Alejandro (Alex) Cavazos",
-    headline: "Technical Co-Founder & CTO · Product, Infrastructure and AI Agents",
+    headline: "Technical Co-Founder & CTO",
     location: "Monterrey, Nuevo León, Mexico",
     contacts,
   },
   summary:
-    "Technical co-founder and CTO who takes products from first commit to production on his own (architecture, infrastructure, payments, Mexican tax compliance, AI agents) and has led a team of ~10 engineers.",
+    "Technical co-founder and CTO who designs, builds and operates software products end to end: architecture, infrastructure, payments and Mexican tax compliance, and AI agents in production.",
   experience: [
     {
       title: "Co-Founder & CTO",
-      company: "Octagon Labs",
-      companyNote: "Venture studio that builds and operates software companies",
+      company: "Turboship",
+      companyNote: "Shipping software for businesses in Mexico",
       location: "Monterrey",
-      period: "Jan 2025 – Present",
+      period: "Nov 2023 – Present",
       bullets: [
-        "Built HQ, the operations console and agent control plane (24 tables, 354 tests, 25-command CLI); it replaced 3 legacy systems through a migration that passes 25/25 verification checks.",
-        "Designed and operate 6 autonomous browser agents on 18 systemd timers (headless Claude Code driving real Chrome): 1,677 recorded runs, 7,549 leads (4,798 qualified) in 4 countries, ~1,700 AI-written emails sent.",
-        "Agent guardrails live in tested TypeScript, not prompts: no agent-written SQL; dedupe, budgets, send guard.",
-        "Run 24 production processes on a self-hosted server: CI/CD with automatic rollback, daily verified backups.",
+        "Built Turboship Carrier, a multi-tenant shipping platform integrating 18 carriers, deployed as an isolated instance for each white-label reseller.",
+        "From Jul 2025 to Jul 2026 the network processed ~1.6M shipments for 852 businesses through 9 resellers (~$257.7M MXN billed).",
+        "Owned payments and Mexican tax compliance: SPEI deposits with automated reconciliation, CFDI e-invoicing, Mercado Pago.",
+        "Built Turboship WMS (inventory, point of sale, online stores) as a second product and automated white-label provisioning end to end.",
       ],
     },
     {
       title: "Co-Founder & CTO",
-      company: "Turboship",
-      companyNote: "Multi-carrier shipping platform, Mexico",
+      company: "Octagon Labs",
+      companyNote: "Studio that builds and operates its own software companies",
       location: "Monterrey",
-      period: "Nov 2023 – Present",
+      period: "Jan 2025 – Present",
       bullets: [
-        "Built Turboship Carrier, the multi-tenant B2B shipping SaaS, from the first commit: 2,047 commits (~99.7% authored personally), ~192k lines of TypeScript, 18 carriers via 47 provider integrations.",
-        "One codebase serves 9 white-label resellers and 852 business customers: ~1.6M shipments and ~$257.7M MXN processed and billed across the network in 13 months (Jul 2025 – Jul 2026).",
-        "Owned payments and Mexican tax compliance: STP/SPEI reconciliation, CFDI e-invoicing, Mercado Pago.",
-        "Shipped Turboship WMS as a second product (1,088 commits, ~311k lines in ~15 months) and made white-label provisioning an AI-agent skill: database, CDN, Vercel project, email domain and first deploy in one run.",
+        "Built HQ, the studio's operations console: revenue reporting from each company, a shared lead database and the controls for its AI agents. It replaced three legacy systems.",
+        "Designed and run autonomous browser agents that find and qualify leads on Google Maps and Facebook: 7,549 leads across Mexico, Canada, Colombia and Brazil.",
+        "Built EventKit (event ticketing with Wallet passes, QR check-in and an Android door scanner), FanKit (Wallet loyalty cards) and Timbra Chat (an agent that issues CFDI invoices from receipts).",
+        "Run the studio's products on self-hosted infrastructure: Postgres, Redis, object storage, Cloudflare Tunnel and self-hosted CI runners, with automatic rollback and daily verified backups.",
       ],
     },
     {
       title: "Technical Advisor (Aug 2026 – Present) · previously Head of Technology (Apr 2024 – Jul 2026)",
       company: "Terpa Solutions",
-      companyNote: "Payments fintech: card terminals for vending, micromarkets, parking and kiosks",
+      companyNote: "Payments for vending, micromarkets, parking and kiosks",
       location: "Monterrey",
       period: "Apr 2024 – Present",
       bullets: [
-        "Built the multi-tenant terminal-management platform from the first commit (~1,227 of 1,272 commits, ~166k lines, 77 data models) with Openpay, Mercado Pago and Facturama CFDI integrations.",
-        "Led a team of ~10 engineers across Android payment-terminal apps (PAX, Sunmi EMV, MDB vending, parking, kiosks): signed-APK release pipelines, Sentry crash reporting, sprint planning.",
-        "Introduced AI-native engineering: Claude Code PR review, CODEOWNERS guardrails, an AI-agent hiring exercise.",
+        "Built the multi-tenant platform that manages the payment terminals, with Openpay, Mercado Pago and CFDI integrations.",
+        "Led the team building the Android apps on PAX and Sunmi terminals; set up release pipelines and crash reporting.",
+        "Introduced AI-assisted code review and agent-based development practices to the team.",
       ],
     },
     {
@@ -143,36 +140,22 @@ const en: CvContent = {
       bullets: [],
     },
   ],
-  selected: [
-    {
-      name: "EventKit (launching)",
-      line: "Event ticketing: Wallet passes with rotating codes, QR check-in, Android scanner kiosk.",
-    },
-    {
-      name: "FanKit (in production)",
-      line: "Loyalty cards on Apple and Google Wallet, Openpay billing, SMS/email campaigns.",
-    },
-    {
-      name: "Timbra Chat",
-      line: "AI agent that reads receipts with vision models and issues CFDI invoices in a real browser.",
-    },
-  ],
   skills: [
     {
-      group: "AI & agents",
-      items: "Claude Code, Codex, OpenCode (~3.9B tokens in 7 months); Vercel AI SDK, OpenRouter; browser and tool-calling agents, vision document intake, structured outputs, cost-capped model chains",
+      group: "AI",
+      items: "Coding agents (Claude Code, Codex); Vercel AI SDK, OpenAI, Anthropic, OpenRouter; browser and tool-calling agents, document vision, structured outputs",
     },
     {
       group: "Engineering",
-      items: "TypeScript, Next.js 16, React 19, Tailwind 4, Postgres (Drizzle, Prisma), Redis/BullMQ, Socket.IO, zod, Kotlin/Compose, React Native/Expo",
+      items: "TypeScript, Next.js, React, Postgres, Redis, BullMQ, Socket.IO, Kotlin / Compose, React Native",
     },
     {
       group: "Infrastructure",
-      items: "Self-hosted Linux (pm2, Docker, Cloudflare Tunnel), Vercel, DigitalOcean, GitHub Actions",
+      items: "Linux servers, Docker, Cloudflare, Vercel, DigitalOcean, GitHub Actions",
     },
     {
       group: "Payments (MX)",
-      items: "CFDI e-invoicing (Facturama), STP/SPEI reconciliation, Openpay, Mercado Pago, Zoho Books",
+      items: "CFDI e-invoicing, SPEI reconciliation, Openpay, Mercado Pago",
     },
   ],
   languages: "Spanish (native) · English (professional)",
@@ -181,13 +164,11 @@ const en: CvContent = {
 const es: CvContent = {
   meta: {
     title: "Currículum — Alex Cavazos",
-    description:
-      "Currículum de Alex Cavazos, cofundador técnico y CTO en Monterrey, México: productos desde el primer commit hasta producción, infraestructura, pagos y agentes de IA.",
+    description: "Currículum de Alex Cavazos, cofundador técnico y CTO en Monterrey, México.",
   },
   labels: {
     summary: "Perfil",
     experience: "Experiencia",
-    selected: "Productos destacados",
     skills: "Competencias",
     languages: "Idiomas",
     earlier: "Trayectoria previa",
@@ -197,49 +178,49 @@ const es: CvContent = {
   },
   header: {
     name: "Alejandro (Alex) Cavazos",
-    headline: "Cofundador técnico y CTO · Producto, infraestructura y agentes de IA",
+    headline: "Cofundador técnico y CTO",
     location: "Monterrey, Nuevo León, México",
     contacts,
   },
   summary:
-    "Cofundador técnico y CTO que lleva productos por su cuenta del primer commit a producción (arquitectura, infraestructura, pagos, cumplimiento fiscal en México, agentes de IA); dirigió un equipo de ~10 ingenieros.",
+    "Cofundador técnico y CTO que diseña, construye y opera productos de software de punta a punta: arquitectura, infraestructura, pagos y cumplimiento fiscal en México, y agentes de IA en producción.",
   experience: [
     {
       title: "Cofundador y CTO",
-      company: "Octagon Labs",
-      companyNote: "Estudio de ventures que construye y opera empresas de software",
+      company: "Turboship",
+      companyNote: "Software de envíos para negocios en México",
       location: "Monterrey",
-      period: "Ene 2025 – Actualidad",
+      period: "Nov 2023 – Actualidad",
       bullets: [
-        "Construí HQ, la consola de operaciones y plano de control de agentes (24 tablas, 354 pruebas, CLI de 25 comandos); reemplazó 3 sistemas heredados con una migración que aprueba 25 de 25 verificaciones.",
-        "Diseñé y opero 6 agentes autónomos de navegador en 18 temporizadores de systemd (Claude Code sobre Chrome real): 1,677 ejecuciones, 7,549 prospectos (4,798 calificados) en 4 países, ~1,700 correos enviados, escritos por IA.",
-        "Salvaguardas en TypeScript probado, no en prompts: sin SQL de agentes; deduplicación y presupuestos en código.",
-        "Opero 24 procesos en un servidor propio: CI/CD con reversión automática y respaldos diarios verificados.",
+        "Construí Turboship Carrier, una plataforma de envíos multi-tenant con 18 paqueterías integradas, desplegada como instancia aislada para cada revendedor de marca blanca.",
+        "De jul 2025 a jul 2026 la red procesó ~1.6 millones de envíos para 852 negocios a través de 9 revendedores (~$257.7 millones MXN facturados).",
+        "Responsable de pagos y cumplimiento fiscal: depósitos SPEI con conciliación automática, facturación CFDI, Mercado Pago.",
+        "Construí Turboship WMS (inventario, punto de venta, tiendas en línea) como segundo producto y automaticé por completo el alta de nuevas marcas blancas.",
       ],
     },
     {
       title: "Cofundador y CTO",
-      company: "Turboship",
-      companyNote: "Plataforma de envíos multipaquetería, México",
+      company: "Octagon Labs",
+      companyNote: "Estudio que construye y opera sus propias empresas de software",
       location: "Monterrey",
-      period: "Nov 2023 – Actualidad",
+      period: "Ene 2025 – Actualidad",
       bullets: [
-        "Construí Turboship Carrier, el SaaS B2B multi-tenant de envíos, desde el primer commit: 2,047 commits (~99.7% propios), ~192 mil líneas de TypeScript, 18 paqueterías mediante 47 integraciones.",
-        "Una sola base de código para 9 revendedores de marca blanca y 852 clientes empresariales: ~1.6 millones de envíos y ~$257.7 millones MXN procesados y facturados en la red en 13 meses (jul 2025 – jul 2026).",
-        "Responsable de pagos y cumplimiento fiscal: conciliación STP/SPEI, facturación CFDI, Mercado Pago.",
-        "Lancé Turboship WMS como segundo producto (1,088 commits, ~311 mil líneas en ~15 meses) y convertí el alta de cada marca blanca en una habilidad de agente de IA: base de datos, CDN, Vercel, correo y primer despliegue.",
+        "Construí HQ, la consola de operación del estudio: ingresos de cada empresa, una base de prospectos compartida y los controles de sus agentes de IA. Reemplazó tres sistemas anteriores.",
+        "Diseñé y opero agentes autónomos de navegador que encuentran y califican prospectos en Google Maps y Facebook: 7,549 prospectos en México, Canadá, Colombia y Brasil.",
+        "Construí EventKit (boletaje con pases de Wallet, check-in con QR y escáner Android), FanKit (tarjetas de lealtad en Wallet) y Timbra Chat (un agente que emite facturas CFDI a partir de tickets).",
+        "Opero los productos del estudio en infraestructura propia: Postgres, Redis, almacenamiento de objetos, Cloudflare Tunnel y runners de CI propios, con reversión automática y respaldos diarios verificados.",
       ],
     },
     {
       title: "Asesor Técnico (ago 2026 – actualidad) · antes Líder de Tecnología (abr 2024 – jul 2026)",
       company: "Terpa Solutions",
-      companyNote: "Fintech: terminales para vending, micromercados, estacionamientos y kioscos",
+      companyNote: "Pagos para vending, micromercados, estacionamientos y kioscos",
       location: "Monterrey",
       period: "Abr 2024 – Actualidad",
       bullets: [
-        "Construí la plataforma multi-tenant de gestión de terminales desde el primer commit (~1,227 de 1,272 commits, ~166 mil líneas, 77 modelos de datos) con Openpay, Mercado Pago y CFDI vía Facturama.",
-        "Dirigí un equipo de ~10 ingenieros en apps Android para terminales de pago (PAX, Sunmi EMV, vending MDB, estacionamientos, kioscos): APK firmados, Sentry y planeación de sprints.",
-        "Introduje ingeniería nativa en IA: revisión de PR con Claude Code y una prueba de contratación con agentes.",
+        "Construí la plataforma multi-tenant que administra las terminales de pago, con integraciones de Openpay, Mercado Pago y CFDI.",
+        "Dirigí al equipo de las apps Android para terminales PAX y Sunmi; implementé pipelines de publicación y reporte de errores.",
+        "Introduje revisión de código asistida por IA y prácticas de desarrollo con agentes en el equipo.",
       ],
     },
     {
@@ -271,36 +252,22 @@ const es: CvContent = {
       bullets: [],
     },
   ],
-  selected: [
-    {
-      name: "EventKit (en lanzamiento)",
-      line: "Boletaje con pases de Wallet de código rotativo, check-in por QR y kiosco Android.",
-    },
-    {
-      name: "FanKit (en producción)",
-      line: "Tarjetas de lealtad en Apple y Google Wallet, cobro con Openpay, campañas por SMS y correo.",
-    },
-    {
-      name: "Timbra Chat",
-      line: "Agente de IA que lee tickets con modelos de visión y emite facturas CFDI en un navegador real.",
-    },
-  ],
   skills: [
     {
-      group: "IA y agentes",
-      items: "Claude Code, Codex, OpenCode (~3,900 millones de tokens en 7 meses); Vercel AI SDK, OpenRouter; agentes de navegador, visión, cadenas de modelos con tope de costo",
+      group: "IA",
+      items: "Agentes de programación (Claude Code, Codex); Vercel AI SDK, OpenAI, Anthropic, OpenRouter; agentes de navegador y con herramientas, visión de documentos, salidas estructuradas",
     },
     {
       group: "Ingeniería",
-      items: "TypeScript, Next.js 16, React 19, Tailwind 4, Postgres (Drizzle, Prisma), Redis/BullMQ, Socket.IO, zod, Kotlin/Compose, React Native/Expo",
+      items: "TypeScript, Next.js, React, Postgres, Redis, BullMQ, Socket.IO, Kotlin / Compose, React Native",
     },
     {
       group: "Infraestructura",
-      items: "Servidores Linux propios (pm2, Docker, Cloudflare Tunnel), Vercel, DigitalOcean, GitHub Actions",
+      items: "Servidores Linux, Docker, Cloudflare, Vercel, DigitalOcean, GitHub Actions",
     },
     {
       group: "Pagos (MX)",
-      items: "Facturación CFDI (Facturama), conciliación STP/SPEI, Openpay, Mercado Pago, Zoho Books",
+      items: "Facturación CFDI, conciliación SPEI, Openpay, Mercado Pago",
     },
   ],
   languages: "Español (nativo) · Inglés (profesional)",

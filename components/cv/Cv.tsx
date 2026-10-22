@@ -129,16 +129,6 @@ function Sheet({ c }: { c: CvContent }) {
         ) : null}
       </Section>
 
-      <Section id="cv-selected" title={c.labels.selected}>
-        <ul className={s.products}>
-          {c.selected.map((p) => (
-            <li key={p.name}>
-              <strong>{p.name}.</strong> {p.line}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
       <Section id="cv-skills" title={c.labels.skills}>
         <dl className={s.skills}>
           {c.skills.map((g) => (

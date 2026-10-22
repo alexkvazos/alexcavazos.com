@@ -77,8 +77,8 @@ export const LINKS = {
 
 /** Default meta description per locale (pages may override). */
 export const DEFAULT_DESCRIPTION: Record<Locale, string> = {
-  en: "Technical co-founder and AI builder in Monterrey, Mexico. I take products from first commit to production — product, infrastructure, and the AI agents that operate and sell them.",
-  es: "Cofundador técnico y AI builder en Monterrey, México. Llevo productos del primer commit a producción — producto, infraestructura y los agentes de IA que los operan y venden.",
+  en: "Technical co-founder in Monterrey, Mexico. I design, build and run software products end to end, including the AI agents that handle parts of the work.",
+  es: "Cofundador técnico en Monterrey, México. Diseño, construyo y opero productos de software de punta a punta, incluidos los agentes de IA que se encargan de parte del trabajo.",
 };
 
 export { THEME_STORAGE_KEY, themeBootstrapScript, type Theme } from "./theme";

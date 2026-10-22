@@ -311,22 +311,6 @@
   min-width: 19ch;
 }
 
-/* Selected products */
-
-.products {
-  list-style: none;
-}
-.products li {
-  text-wrap: pretty;
-  break-inside: avoid;
-}
-.products li + li {
-  margin-top: 1.5pt;
-}
-.products strong {
-  font-weight: 700;
-}
-
 /* Skills */
 
 .skills {

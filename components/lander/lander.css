@@ -1,136 +1,22 @@
 /* Lander-only styles (imported by components/lander/Lander.tsx). Tokens come from app/globals.css. */
 
-/* ---- Backdrop: faint dot grid + warm glow, purely decorative ---------------------------------- */
-.lander-backdrop {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 1100px;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
+/* Hero transcript: each line fades in after the previous one (--i set inline). CSS only, so no-JS works. */
+.session-line {
+  animation: session-in 0.35s ease-out both;
+  animation-delay: calc(var(--i, 0) * 160ms + 150ms);
 }
-.lander-backdrop::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(color-mix(in oklab, var(--fg) 14%, transparent) 1px, transparent 1px);
-  background-size: 22px 22px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 0%, transparent 75%);
-  opacity: 0.55;
-}
-.lander-backdrop::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -340px;
-  width: 1100px;
-  height: 700px;
-  transform: translateX(-35%);
-  background: radial-gradient(closest-side, var(--accent-soft), transparent);
-  filter: blur(10px);
-}
-
-/* ---- Caret --------------------------------------------------------------------------------- */
-.caret {
-  border-radius: 1px;
-  opacity: 0.9;
-}
-.caret-blink {
-  animation: caret-blink 1.06s steps(1, end) infinite;
-}
-@keyframes caret-blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-/* ---- Hero progressive enhancement ---------------------------------------------------------
- * <html class="hero-anim"> is set by an inline script before paint when the animation will run.
- * Until the client component is ready, hide the lines; the failsafe reveals them if JS never runs. */
-html.hero-anim .hero:not([data-ready]) .hl {
-  visibility: hidden;
-  animation: hero-failsafe 0s linear 2.5s forwards;
-}
-@keyframes hero-failsafe {
-  to {
-    visibility: visible;
-  }
-}
-
-/* ---- Agent log: slow vertical scroll inside its own box ----------------------------------- */
-.log-viewport {
-  mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
-}
-.log-track {
-  position: absolute;
-  inset: 0.5rem 0.75rem auto;
-  animation: log-scroll 38s linear infinite;
-}
-.log-viewport:hover .log-track,
-.log-viewport:focus-within .log-track {
-  animation-play-state: paused;
-}
-@keyframes log-scroll {
+@keyframes session-in {
   from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-50%);
+    opacity: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .log-track {
-    animation: none !important;
-  }
-  .log-track .log-copy {
-    display: none;
-  }
-  .log-track {
-    position: static;
-  }
-  .log-viewport {
-    overflow-y: auto;
-    mask-image: none;
+  .session-line {
+    animation: none;
   }
 }
 
-/* ---- Live status dot ---------------------------------------------------------------------- */
-.dot-pulse {
-  position: relative;
-}
-.dot-pulse::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 9999px;
-  background: currentColor;
-  opacity: 0.35;
-  animation: dot-pulse 2s ease-out infinite;
-}
-@keyframes dot-pulse {
-  from {
-    transform: scale(0.5);
-    opacity: 0.45;
-  }
-  to {
-    transform: scale(1.6);
-    opacity: 0;
-  }
-}
-
-/* ---- Scrollers without page-level overflow ------------------------------------------------- */
-.no-scrollbar {
-  scrollbar-width: none;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.chips-fade {
-  mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
-}
-
-/* ---- Theme toggle icon (moon in dark, sun in light) --------------------------------------- */
+/* Theme toggle icon (moon in dark, sun in light). */
 .theme-toggle .icon-sun {
   display: none;
 }
@@ -146,33 +32,5 @@ html.hero-anim .hero:not([data-ready]) .hl {
   }
   :root:not([data-theme="dark"]) .theme-toggle .icon-moon {
     display: none;
-  }
-}
-
-/* Sticky header offset for in-page anchors. */
-.lander-section {
-  scroll-margin-top: 112px;
-}
-@media (min-width: 1024px) {
-  .lander-section {
-    scroll-margin-top: 72px;
-  }
-}
-
-/* Featured card glow ring. */
-.featured-card {
-  background: radial-gradient(120% 140% at 100% 0%, var(--accent-soft), transparent 55%), var(--surface);
-}
-
-/* Soft drop shadow for terminal panes; lighter and warmer on the light theme. */
-.pane-shadow {
-  box-shadow: 0 40px 120px -60px rgb(0 0 0 / 0.85);
-}
-:root[data-theme="light"] .pane-shadow {
-  box-shadow: 0 30px 80px -50px rgb(80 50 10 / 0.28);
-}
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .pane-shadow {
-    box-shadow: 0 30px 80px -50px rgb(80 50 10 / 0.28);
   }
 }
