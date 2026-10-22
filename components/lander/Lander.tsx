@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { lander, type Company, type Link, type Step } from "@/content/lander";
 import { LINKS, SITE_URL, absoluteUrl, localePath, type Locale } from "@/lib/site";
-import Shell from "./Shell";
 import ThemeToggle from "./ThemeToggle";
 import "./lander.css";
 
@@ -293,7 +292,6 @@ export default function Lander({ locale }: { locale: Locale }) {
           </ul>
         </Block>
 
-        <Shell shell={c.shell} label={c.ui.shellLabel} />
       </main>
 
       <footer className="flex flex-wrap justify-between gap-x-6 gap-y-1 border-t border-border py-6 text-[12px] text-subtle">

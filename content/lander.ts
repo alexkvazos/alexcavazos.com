@@ -23,9 +23,6 @@ export type Step =
   | { kind: "tool"; tool: string; args: string; output: string[] }
   | { kind: "say"; text: string };
 
-/** Plain shell command for the prompt at the bottom. `name` is matched case-insensitively. */
-export type Command = { name: string; output: string[] };
-
 export type EarlierRole = { title: string; company?: string; period: string };
 
 export type LanderContent = {
@@ -37,7 +34,6 @@ export type LanderContent = {
     langSwitch: Link;
     place: string;
     sessionLabel: string;
-    shellLabel: string;
   };
   session: Step[];
   /** `$ whoami` and its answer. */
@@ -47,7 +43,6 @@ export type LanderContent = {
   stack: { cmd: string; lines: string[] };
   cv: { cmd: string; links: Link[] };
   contact: { cmd: string; links: Link[] };
-  shell: { placeholder: string; help: string[]; commands: Command[]; notFound: string };
 };
 
 export const EMAIL = "me@alexcavazos.com";
@@ -96,7 +91,6 @@ const en: LanderContent = {
     langSwitch: { label: "es", href: "/es" },
     place: "Monterrey, MX",
     sessionLabel: "Agent session about Alex Cavazos",
-    shellLabel: "Shell",
   },
   session: [
     { kind: "user", text: "who is alex cavazos?" },
@@ -223,20 +217,6 @@ const en: LanderContent = {
     ],
   },
   contact: { cmd: "contact", links: contactLinks },
-  shell: {
-    placeholder: "type help",
-    help: ["whoami   ls   open <turboship|eventkit|fankit>   cv   contact   clear"],
-    commands: [
-      { name: "whoami", output: ["Alex Cavazos. Technical co-founder in Monterrey, Mexico."] },
-      { name: "ls", output: ["turboship  octagon-labs  terpa-solutions"] },
-      { name: "open turboship", output: [LINKS.turboship] },
-      { name: "open eventkit", output: [LINKS.eventkit] },
-      { name: "open fankit", output: [LINKS.fankit] },
-      { name: "cv", output: ["/cv", LINKS.cvPdfEn] },
-      { name: "contact", output: [LINKS.email, LINKS.github, LINKS.linkedin, LINKS.x] },
-    ],
-    notFound: "command not found: {cmd}",
-  },
 };
 
 // ---------------------------------------------------------------------------
@@ -256,7 +236,6 @@ const es: LanderContent = {
     langSwitch: { label: "en", href: "/" },
     place: "Monterrey, MX",
     sessionLabel: "Sesión de agente sobre Alex Cavazos",
-    shellLabel: "Shell",
   },
   session: [
     { kind: "user", text: "¿quién es alex cavazos?" },
@@ -386,20 +365,6 @@ const es: LanderContent = {
     ],
   },
   contact: { cmd: "contacto", links: contactLinks },
-  shell: {
-    placeholder: "escribe help",
-    help: ["whoami   ls   open <turboship|eventkit|fankit>   cv   contact   clear"],
-    commands: [
-      { name: "whoami", output: ["Alex Cavazos. Cofundador técnico en Monterrey, México."] },
-      { name: "ls", output: ["turboship  octagon-labs  terpa-solutions"] },
-      { name: "open turboship", output: [LINKS.turboship] },
-      { name: "open eventkit", output: [LINKS.eventkit] },
-      { name: "open fankit", output: [LINKS.fankit] },
-      { name: "cv", output: ["/es/cv", LINKS.cvPdfEs] },
-      { name: "contact", output: [LINKS.email, LINKS.github, LINKS.linkedin, LINKS.x] },
-    ],
-    notFound: "comando no encontrado: {cmd}",
-  },
 };
 
 export const lander: Record<Locale, LanderContent> = { en, es };
