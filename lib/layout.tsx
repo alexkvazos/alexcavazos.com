@@ -26,7 +26,7 @@ export function rootMetadata(locale: Locale): Metadata {
       locale: OG_LOCALE[locale],
       alternateLocale: Object.values(OG_LOCALE).filter((l) => l !== OG_LOCALE[locale]),
     },
-    twitter: { card: "summary_large_image", creator: "@alexcavazossh" },
+    twitter: { card: "summary_large_image", creator: "@alexkvazos_" },
     formatDetection: { telephone: false, address: false, email: false },
   };
 }

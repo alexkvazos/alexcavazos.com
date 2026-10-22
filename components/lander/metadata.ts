@@ -25,7 +25,7 @@ export function landerMetadata(locale: Locale): Metadata {
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      creator: "@alexcavazossh",
+      creator: "@alexkvazos_",
     },
   };
 }

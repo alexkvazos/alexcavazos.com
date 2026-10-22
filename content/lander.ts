@@ -50,7 +50,7 @@ export const LINKS = {
   email: `mailto:${EMAIL}`,
   github: "https://github.com/alexkvazos",
   linkedin: "https://www.linkedin.com/in/alejandro-cavazos-76a488b9",
-  x: "https://x.com/alexcavazossh",
+  x: "https://x.com/alexkvazos_",
   cvPdfEn: "/alejandro-cavazos-cv-en.pdf",
   cvPdfEs: "/alejandro-cavazos-cv-es.pdf",
   eventkit: "https://eventkit.octagonlabs.ai",
@@ -63,7 +63,7 @@ const contactLinks: Link[] = [
   { label: EMAIL, href: LINKS.email },
   { label: "github.com/alexkvazos", href: LINKS.github },
   { label: "linkedin.com/in/alejandro-cavazos-76a488b9", href: LINKS.linkedin },
-  { label: "x.com/alexcavazossh", href: LINKS.x },
+  { label: "x.com/alexkvazos_", href: LINKS.x },
 ];
 
 const stackLines = [
@@ -115,6 +115,8 @@ const en: LanderContent = {
     links: [
       { label: "cv", href: "/cv" },
       { label: "email", href: LINKS.email },
+      { label: "github", href: LINKS.github },
+      { label: "linkedin", href: LINKS.linkedin },
     ],
   },
   work: {
@@ -255,6 +257,8 @@ const es: LanderContent = {
     links: [
       { label: "cv", href: "/es/cv" },
       { label: "correo", href: LINKS.email },
+      { label: "github", href: LINKS.github },
+      { label: "linkedin", href: LINKS.linkedin },
     ],
   },
   work: {

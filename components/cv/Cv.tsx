@@ -18,7 +18,7 @@ export function cvMetadata(locale: Locale): Metadata {
       url: absoluteUrl(locale, "/cv"),
       locale: OG_LOCALE[locale],
     },
-    twitter: { card: "summary_large_image", title: meta.title, description: meta.description, creator: "@alexcavazossh" },
+    twitter: { card: "summary_large_image", title: meta.title, description: meta.description, creator: "@alexkvazos_" },
   };
 }
 

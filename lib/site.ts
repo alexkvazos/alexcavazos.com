@@ -72,7 +72,7 @@ export const LINKS = {
   mailto: "mailto:me@alexcavazos.com",
   github: "https://github.com/alexkvazos",
   linkedin: "https://www.linkedin.com/in/alejandro-cavazos-76a488b9",
-  x: "https://x.com/alexcavazossh",
+  x: "https://x.com/alexkvazos_",
 } as const;
 
 /** Default meta description per locale (pages may override). */
