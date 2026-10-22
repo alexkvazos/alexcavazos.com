@@ -55,7 +55,8 @@ export const LINKS = {
   cvPdfEs: "/alejandro-cavazos-cv-es.pdf",
   eventkit: "https://eventkit.octagonlabs.ai",
   turboship: "https://turboship.app",
-  fankit: "https://app.fankit.io",
+  fankit: "https://fankit.io",
+  timbrachat: "https://timbrachat.ai",
 } as const;
 
 const contactLinks: Link[] = [
@@ -149,6 +150,7 @@ const en: LanderContent = {
           },
           {
             name: "Timbra Chat",
+            href: LINKS.timbrachat,
             text: "An agent that issues Mexican tax invoices: it reads the receipt, then fills in the merchant's invoicing site.",
           },
         ],
@@ -288,6 +290,7 @@ const es: LanderContent = {
           },
           {
             name: "Timbra Chat",
+            href: LINKS.timbrachat,
             text: "Un agente que emite facturas CFDI: lee el ticket y llena el portal de facturación del comercio.",
           },
         ],
