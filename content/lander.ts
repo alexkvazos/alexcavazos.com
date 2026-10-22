@@ -200,7 +200,7 @@ export const lander: LanderContent = {
       "I like owning the whole thing, from the first commit to keeping it running.",
       "I write software with coding agents every day.",
       "I build agents that operate: they find leads, talk to customers, issue invoices, suggest improvements and run real work in production.",
-      "I prefer plain, typed tools and servers I understand.",
+      "I prefer lean infrastructure and architecture with a purpose over trendy, shiny patterns.",
     ],
   },
   stack: { cmd: "cat stack", lines: stackLines },
