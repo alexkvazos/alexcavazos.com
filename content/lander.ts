@@ -59,6 +59,8 @@ export const LINKS = {
   turboshipWms: "https://turboship.mx/wms/",
   fankit: "https://fankit.io",
   terpa: "https://terpasolutions.com",
+  octagon: "https://octagonlabs.ai",
+  turboship: "https://turboship.mx",
   timbrachat: "https://timbrachat.ai",
 } as const;
 
@@ -127,6 +129,7 @@ const en: LanderContent = {
     companies: [
       {
         company: "Octagon Labs",
+        href: LINKS.octagon,
         role: "Co-founder & CTO",
         period: "2025 – now",
         about: "A studio that builds and operates its own software companies.",
@@ -162,6 +165,7 @@ const en: LanderContent = {
       },
       {
         company: "Turboship",
+        href: LINKS.turboship,
         role: "Co-founder & CTO",
         period: "2023 – now",
         about: "Shipping software for businesses in Mexico.",
@@ -271,6 +275,7 @@ const es: LanderContent = {
     companies: [
       {
         company: "Octagon Labs",
+        href: LINKS.octagon,
         role: "Cofundador y CTO",
         period: "2025 – hoy",
         about: "Un estudio que construye y opera sus propias empresas de software.",
@@ -306,6 +311,7 @@ const es: LanderContent = {
       },
       {
         company: "Turboship",
+        href: LINKS.turboship,
         role: "Cofundador y CTO",
         period: "2023 – hoy",
         about: "Software de envíos para negocios en México.",
