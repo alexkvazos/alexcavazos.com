@@ -11,6 +11,7 @@ export type Item = { name?: string; href?: string; text: string };
 
 export type Company = {
   company: string;
+  href?: string;
   role: string;
   period: string;
   about: string;
@@ -57,6 +58,7 @@ export const LINKS = {
   turboshipCarrier: "https://turboship.mx/carrier/",
   turboshipWms: "https://turboship.mx/wms/",
   fankit: "https://fankit.io",
+  terpa: "https://terpasolutions.com",
   timbrachat: "https://timbrachat.ai",
 } as const;
 
@@ -181,6 +183,7 @@ const en: LanderContent = {
       },
       {
         company: "Terpa Solutions",
+        href: LINKS.terpa,
         role: "Technical advisor · head of technology until 2026",
         period: "2024 – now",
         about: "Payments for vending machines, micromarkets, parking and kiosks.",
@@ -324,6 +327,7 @@ const es: LanderContent = {
       },
       {
         company: "Terpa Solutions",
+        href: LINKS.terpa,
         role: "Asesor técnico · líder de tecnología hasta 2026",
         period: "2024 – hoy",
         about: "Pagos para máquinas vending, micromercados, estacionamientos y kioscos.",

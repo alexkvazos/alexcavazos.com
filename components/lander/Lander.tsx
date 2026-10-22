@@ -102,7 +102,13 @@ function CompanyEntry({ c }: { c: Company }) {
   return (
     <Node period={c.period} className="pb-14">
       <h3>
-        <span className="font-semibold text-fg">{c.company}</span>
+        {c.href ? (
+          <A href={c.href} className="font-semibold text-fg">
+            {c.company}
+          </A>
+        ) : (
+          <span className="font-semibold text-fg">{c.company}</span>
+        )}
         <span className="text-muted"> · {c.role}</span>
       </h3>
       <p className="text-subtle">{c.about}</p>

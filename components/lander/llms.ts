@@ -12,7 +12,7 @@ export function buildLlmsTxt(c: LanderContent): string {
 
   out.push("## Work", "");
   for (const co of c.work.companies) {
-    out.push(`### ${co.company} — ${co.role} (${co.period})`);
+    out.push(`### ${co.company}${co.href ? ` (${co.href})` : ""} — ${co.role} (${co.period})`);
     out.push(co.about);
     for (const it of co.items) {
       const name = it.name ? `${it.name}${it.href ? ` (${it.href})` : ""}: ` : "";
