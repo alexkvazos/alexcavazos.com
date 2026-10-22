@@ -1,18 +1,56 @@
 /* Lander-only styles (imported by components/lander/Lander.tsx). Tokens come from app/globals.css. */
 
-/* Hero transcript: each line fades in after the previous one (--i set inline). CSS only, so no-JS works. */
-.session-line {
-  animation: session-in 0.35s ease-out both;
-  animation-delay: calc(var(--i, 0) * 160ms + 150ms);
+/* Intro overlay (components/lander/Intro.tsx). Hidden unless <html class="intro"> was set before paint.
+ * Failsafe: if the client never takes over, the overlay hides itself after a few seconds. */
+.intro-overlay {
+  display: none;
+  transition: opacity 0.55s ease;
 }
-@keyframes session-in {
-  from {
+html.intro .intro-overlay {
+  display: block;
+  animation: intro-failsafe 0.4s ease 9s forwards;
+}
+.intro-overlay.intro-leaving {
+  opacity: 0;
+}
+@keyframes intro-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.intro-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 1px;
+  vertical-align: -0.2em;
+  background: var(--muted);
+  animation: intro-blink 1s steps(1, end) infinite;
+}
+@keyframes intro-blink {
+  50% {
     opacity: 0;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .session-line {
-    animation: none;
+
+.intro-pulse {
+  animation: intro-pulse 0.7s ease-in-out infinite alternate;
+}
+@keyframes intro-pulse {
+  from {
+    opacity: 0.25;
+  }
+}
+
+.intro-done {
+  animation: intro-done-in 0.3s ease-out both;
+}
+@keyframes intro-done-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
   }
 }
 

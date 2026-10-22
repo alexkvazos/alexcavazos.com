@@ -75,19 +75,6 @@ const en: CvContent = {
   experience: [
     {
       title: "Co-Founder & CTO",
-      company: "Turboship",
-      companyNote: "Shipping software for businesses in Mexico",
-      location: "Monterrey",
-      period: "Nov 2023 – Present",
-      bullets: [
-        "Built Turboship Carrier, a multi-tenant shipping platform integrating 18 carriers, deployed as an isolated instance for each white-label reseller.",
-        "From Jul 2025 to Jul 2026 the network processed ~1.6M shipments for 852 businesses through 9 resellers (~$257.7M MXN billed).",
-        "Owned payments and Mexican tax compliance: SPEI deposits with automated reconciliation, CFDI e-invoicing, Mercado Pago.",
-        "Built Turboship WMS (inventory, point of sale, online stores) as a second product and automated white-label provisioning end to end.",
-      ],
-    },
-    {
-      title: "Co-Founder & CTO",
       company: "Octagon Labs",
       companyNote: "Studio that builds and operates its own software companies",
       location: "Monterrey",
@@ -97,6 +84,19 @@ const en: CvContent = {
         "Designed and run autonomous browser agents that find and qualify leads on Google Maps and Facebook: 7,549 leads across Mexico, Canada, Colombia and Brazil.",
         "Built EventKit (event ticketing with Wallet passes, QR check-in and an Android door scanner), FanKit (Wallet loyalty cards) and Timbra Chat (an agent that issues CFDI invoices from receipts).",
         "Run the studio's products on self-hosted infrastructure: Postgres, Redis, object storage, Cloudflare Tunnel and self-hosted CI runners, with automatic rollback and daily verified backups.",
+      ],
+    },
+    {
+      title: "Co-Founder & CTO",
+      company: "Turboship",
+      companyNote: "Shipping software for businesses in Mexico",
+      location: "Monterrey",
+      period: "Nov 2023 – Present",
+      bullets: [
+        "Built Turboship Carrier, a multi-tenant shipping platform integrating 18 carriers, deployed as an isolated instance for each white-label reseller.",
+        "From Jul 2025 to Jul 2026 the network processed ~1.6M shipments for 852 businesses through 9 resellers (~$257.7M MXN billed).",
+        "Owned payments and Mexican tax compliance: SPEI deposits with automated reconciliation, CFDI e-invoicing, Mercado Pago.",
+        "Built Turboship WMS (inventory, point of sale, online stores) as a second product and automated white-label provisioning end to end.",
       ],
     },
     {
@@ -187,19 +187,6 @@ const es: CvContent = {
   experience: [
     {
       title: "Cofundador y CTO",
-      company: "Turboship",
-      companyNote: "Software de envíos para negocios en México",
-      location: "Monterrey",
-      period: "Nov 2023 – Actualidad",
-      bullets: [
-        "Construí Turboship Carrier, una plataforma de envíos multi-tenant con 18 paqueterías integradas, desplegada como instancia aislada para cada revendedor de marca blanca.",
-        "De jul 2025 a jul 2026 la red procesó ~1.6 millones de envíos para 852 negocios a través de 9 revendedores (~$257.7 millones MXN facturados).",
-        "Responsable de pagos y cumplimiento fiscal: depósitos SPEI con conciliación automática, facturación CFDI, Mercado Pago.",
-        "Construí Turboship WMS (inventario, punto de venta, tiendas en línea) como segundo producto y automaticé por completo el alta de nuevas marcas blancas.",
-      ],
-    },
-    {
-      title: "Cofundador y CTO",
       company: "Octagon Labs",
       companyNote: "Estudio que construye y opera sus propias empresas de software",
       location: "Monterrey",
@@ -209,6 +196,19 @@ const es: CvContent = {
         "Diseñé y opero agentes autónomos de navegador que encuentran y califican prospectos en Google Maps y Facebook: 7,549 prospectos en México, Canadá, Colombia y Brasil.",
         "Construí EventKit (boletaje con pases de Wallet, check-in con QR y escáner Android), FanKit (tarjetas de lealtad en Wallet) y Timbra Chat (un agente que emite facturas CFDI a partir de tickets).",
         "Opero los productos del estudio en infraestructura propia: Postgres, Redis, almacenamiento de objetos, Cloudflare Tunnel y runners de CI propios, con reversión automática y respaldos diarios verificados.",
+      ],
+    },
+    {
+      title: "Cofundador y CTO",
+      company: "Turboship",
+      companyNote: "Software de envíos para negocios en México",
+      location: "Monterrey",
+      period: "Nov 2023 – Actualidad",
+      bullets: [
+        "Construí Turboship Carrier, una plataforma de envíos multi-tenant con 18 paqueterías integradas, desplegada como instancia aislada para cada revendedor de marca blanca.",
+        "De jul 2025 a jul 2026 la red procesó ~1.6 millones de envíos para 852 negocios a través de 9 revendedores (~$257.7 millones MXN facturados).",
+        "Responsable de pagos y cumplimiento fiscal: depósitos SPEI con conciliación automática, facturación CFDI, Mercado Pago.",
+        "Construí Turboship WMS (inventario, punto de venta, tiendas en línea) como segundo producto y automaticé por completo el alta de nuevas marcas blancas.",
       ],
     },
     {

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
-import { lander, type Company, type Link, type Step } from "@/content/lander";
+import { lander, type Company, type Link } from "@/content/lander";
 import { LINKS, SITE_URL, absoluteUrl, localePath, type Locale } from "@/lib/site";
+import Intro, { INTRO_BOOT_SCRIPT, ReplayIntro } from "./Intro";
 import ThemeToggle from "./ThemeToggle";
 import "./lander.css";
 
@@ -71,66 +72,6 @@ function LinkRow({ links }: { links: Link[] }) {
   );
 }
 
-/** Hero: a short agent transcript. Fully server-rendered; lines fade in with CSS only (none with reduced motion). */
-function Session({ steps, label }: { steps: Step[]; label: string }) {
-  let line = 0;
-  const next = () => ({ "--i": line++ }) as React.CSSProperties;
-  return (
-    <figure className="overflow-hidden rounded-md border border-border bg-surface text-[13px] leading-[1.7] sm:text-[13.5px]">
-      <div className="flex items-center gap-3 border-b border-border px-4 py-2.5" aria-hidden="true">
-        <span className="flex gap-1.5">
-          <span className="size-2.5 rounded-full bg-border-strong" />
-          <span className="size-2.5 rounded-full bg-border-strong" />
-          <span className="size-2.5 rounded-full bg-border-strong" />
-        </span>
-        <span className="text-[12px] text-subtle">~/alex</span>
-      </div>
-      <figcaption className="sr-only">{label}</figcaption>
-      <div className="space-y-3 px-4 py-4 sm:px-5">
-        {steps.map((s, i) => {
-          if (s.kind === "user")
-            return (
-              <p key={i} className="session-line text-fg" style={next()}>
-                <span className="mr-2 text-accent select-none" aria-hidden="true">
-                  &gt;
-                </span>
-                {s.text}
-              </p>
-            );
-          if (s.kind === "tool")
-            return (
-              <div key={i}>
-                <p className="session-line break-words" style={next()}>
-                  <span className="mr-2 text-subtle select-none" aria-hidden="true">
-                    ●
-                  </span>
-                  <span className="text-fg">{s.tool}</span>
-                  <span className="text-muted">({s.args})</span>
-                </p>
-                {s.output.map((o) => (
-                  <p key={o} className="session-line grid grid-cols-[1.5rem_minmax(0,1fr)] text-subtle" style={next()}>
-                    <span className="pl-1 select-none" aria-hidden="true">
-                      ⎿
-                    </span>
-                    <span className="break-words">{o}</span>
-                  </p>
-                ))}
-              </div>
-            );
-          return (
-            <p key={i} className="session-line grid grid-cols-[1rem_minmax(0,1fr)] gap-x-2 text-fg" style={next()}>
-              <span className="text-accent select-none" aria-hidden="true">
-                ●
-              </span>
-              <span>{s.text}</span>
-            </p>
-          );
-        })}
-      </div>
-    </figure>
-  );
-}
-
 /** Timeline node: a dot on the rail, the period above the content. */
 function Node({
   period,
@@ -148,7 +89,7 @@ function Node({
       <span
         aria-hidden="true"
         className={`absolute top-[0.55em] left-0 size-[9px] -translate-x-1/2 rounded-full ${
-          hollow ? "border border-border-strong bg-bg" : "bg-muted"
+          hollow ? "border border-border-strong bg-bg" : "bg-accent"
         }`}
       />
       <p className="text-[12.5px] text-subtle tabular-nums">{period}</p>
@@ -198,6 +139,8 @@ export default function Lander({ locale }: { locale: Locale }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(locale)).replace(/</g, "\\u003c") }}
       />
+      <script dangerouslySetInnerHTML={{ __html: INTRO_BOOT_SCRIPT }} />
+      <Intro lines={c.boot.lines} skip={c.boot.skip} />
       <a
         href="#main"
         className="sr-only rounded bg-fg px-3 py-2 text-bg focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50"
@@ -209,7 +152,7 @@ export default function Lander({ locale }: { locale: Locale }) {
         <a href={localePath(locale)} className="hover:text-fg">
           alex@cavazos <span className="text-muted">~</span>
         </a>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <nav aria-label={c.ui.langLabel} className="flex gap-2">
             {langs.map((l) => (
               <a
@@ -224,13 +167,12 @@ export default function Lander({ locale }: { locale: Locale }) {
               </a>
             ))}
           </nav>
+          <ReplayIntro label={c.boot.replay} />
           <ThemeToggle label={c.ui.themeToggle} />
         </div>
       </header>
 
-      <main id="main" className="flex-1 pt-6 pb-20 sm:pt-10">
-        <Session steps={c.session} label={c.ui.sessionLabel} />
-
+      <main id="main" className="flex-1 pt-6 pb-20 sm:pt-10 [&>section:first-child]:mt-0">
         <Block id="whoami" cmd={c.intro.cmd}>
           <p className="font-semibold text-fg">{c.intro.name}</p>
           <h1 className="mt-2 text-[1.625rem] leading-tight font-semibold tracking-[-0.02em] text-balance text-fg sm:text-[2rem]">

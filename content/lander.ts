@@ -17,11 +17,11 @@ export type Company = {
   items: Item[];
 };
 
-/** Hero transcript: a short agent session about Alex. */
-export type Step =
+/** Intro: a coding-agent session that builds and ships this page, then fades into it. */
+export type BootLine =
   | { kind: "user"; text: string }
-  | { kind: "tool"; tool: string; args: string; output: string[] }
-  | { kind: "say"; text: string };
+  | { kind: "tool"; tool: string; args: string; output: string }
+  | { kind: "done"; text: string };
 
 export type EarlierRole = { title: string; company?: string; period: string };
 
@@ -33,9 +33,8 @@ export type LanderContent = {
     langLabel: string;
     langSwitch: Link;
     place: string;
-    sessionLabel: string;
   };
-  session: Step[];
+  boot: { lines: BootLine[]; skip: string; replay: string };
   /** `$ whoami` and its answer. */
   intro: { cmd: string; name: string; headline: string; lines: string[]; links: Link[] };
   work: { cmd: string; companies: Company[]; earlierLabel: string; earlier: EarlierRole[] };
@@ -90,25 +89,19 @@ const en: LanderContent = {
     langLabel: "Language",
     langSwitch: { label: "es", href: "/es" },
     place: "Monterrey, MX",
-    sessionLabel: "Agent session about Alex Cavazos",
   },
-  session: [
-    { kind: "user", text: "who is alex cavazos?" },
-    { kind: "tool", tool: "Bash", args: "ls ~/work", output: ["turboship  octagon-labs  terpa-solutions"] },
-    {
-      kind: "tool",
-      tool: "Bash",
-      args: "turboship stats --from 2025-07 --to 2026-07",
-      output: ["~1.6M shipments · 852 businesses · 9 resellers"],
-    },
-    {
-      kind: "tool",
-      tool: "Bash",
-      args: "hq leads --count",
-      output: ["7,549 leads found by agents · MX CA CO BR"],
-    },
-    { kind: "say", text: "A technical co-founder who builds and runs software products end to end." },
-  ],
+  boot: {
+    skip: "press any key to skip",
+    replay: "replay intro",
+    lines: [
+      { kind: "user", text: "build alexcavazos.com and ship it" },
+      { kind: "tool", tool: "Read", args: "content/work.md", output: "Octagon Labs · Turboship · Terpa Solutions" },
+      { kind: "tool", tool: "Write", args: "app/page.tsx", output: "whoami, work, notes, stack, cv, contact" },
+      { kind: "tool", tool: "Bash", args: "npm run build", output: "✓ compiled, 4 pages" },
+      { kind: "tool", tool: "Bash", args: "vercel deploy --prod", output: "✓ alexcavazos.com" },
+      { kind: "done", text: "Website is ready" },
+    ],
+  },
   intro: {
     cmd: "whoami",
     name: "Alex Cavazos",
@@ -116,7 +109,7 @@ const en: LanderContent = {
     lines: [
       "Technical co-founder in Monterrey, Mexico.",
       "I design, build and run software products end to end: the product, the infrastructure, the payments and tax integrations, and the AI agents that handle parts of the work.",
-      "Co-founder and CTO at Turboship and Octagon Labs.",
+      "Co-founder and CTO at Octagon Labs and Turboship.",
     ],
     links: [
       { label: "cv", href: "/cv" },
@@ -126,26 +119,6 @@ const en: LanderContent = {
   work: {
     cmd: "cat work",
     companies: [
-      {
-        company: "Turboship",
-        role: "Co-founder & CTO",
-        period: "2023 – now",
-        about: "Shipping software for businesses in Mexico.",
-        items: [
-          {
-            name: "Turboship Carrier",
-            text: "A multi-carrier shipping platform: quotes, labels and tracking across 18 carriers, prepaid balances funded over SPEI, and CFDI e-invoicing. Each white-label reseller runs its own isolated instance.",
-          },
-          {
-            text: "From July 2025 to July 2026 the network processed about 1.6M shipments for 852 businesses through 9 resellers.",
-          },
-          {
-            name: "Turboship WMS",
-            href: LINKS.turboship,
-            text: "Inventory, point of sale and online stores for merchants, in one system.",
-          },
-        ],
-      },
       {
         company: "Octagon Labs",
         role: "Co-founder & CTO",
@@ -177,6 +150,26 @@ const en: LanderContent = {
           {
             name: "Timbra Chat",
             text: "An agent that issues Mexican tax invoices: it reads the receipt, then fills in the merchant's invoicing site.",
+          },
+        ],
+      },
+      {
+        company: "Turboship",
+        role: "Co-founder & CTO",
+        period: "2023 – now",
+        about: "Shipping software for businesses in Mexico.",
+        items: [
+          {
+            name: "Turboship Carrier",
+            text: "A multi-carrier shipping platform: quotes, labels and tracking across 18 carriers, prepaid balances funded over SPEI, and CFDI e-invoicing. Each white-label reseller runs its own isolated instance.",
+          },
+          {
+            text: "From July 2025 to July 2026 the network processed about 1.6M shipments for 852 businesses through 9 resellers.",
+          },
+          {
+            name: "Turboship WMS",
+            href: LINKS.turboship,
+            text: "Inventory, point of sale and online stores for merchants, in one system.",
           },
         ],
       },
@@ -235,25 +228,19 @@ const es: LanderContent = {
     langLabel: "Idioma",
     langSwitch: { label: "en", href: "/" },
     place: "Monterrey, MX",
-    sessionLabel: "Sesión de agente sobre Alex Cavazos",
   },
-  session: [
-    { kind: "user", text: "¿quién es alex cavazos?" },
-    { kind: "tool", tool: "Bash", args: "ls ~/work", output: ["turboship  octagon-labs  terpa-solutions"] },
-    {
-      kind: "tool",
-      tool: "Bash",
-      args: "turboship stats --from 2025-07 --to 2026-07",
-      output: ["~1.6M envíos · 852 negocios · 9 revendedores"],
-    },
-    {
-      kind: "tool",
-      tool: "Bash",
-      args: "hq leads --count",
-      output: ["7,549 prospectos encontrados por agentes · MX CA CO BR"],
-    },
-    { kind: "say", text: "Un cofundador técnico que construye y opera productos de software de punta a punta." },
-  ],
+  boot: {
+    skip: "presiona cualquier tecla para saltar",
+    replay: "repetir intro",
+    lines: [
+      { kind: "user", text: "arma alexcavazos.com y publícalo" },
+      { kind: "tool", tool: "Read", args: "content/work.md", output: "Octagon Labs · Turboship · Terpa Solutions" },
+      { kind: "tool", tool: "Write", args: "app/es/page.tsx", output: "whoami, trabajo, notas, stack, cv, contacto" },
+      { kind: "tool", tool: "Bash", args: "npm run build", output: "✓ compilado, 4 páginas" },
+      { kind: "tool", tool: "Bash", args: "vercel deploy --prod", output: "✓ alexcavazos.com/es" },
+      { kind: "done", text: "El sitio está listo" },
+    ],
+  },
   intro: {
     cmd: "whoami",
     name: "Alex Cavazos",
@@ -261,7 +248,7 @@ const es: LanderContent = {
     lines: [
       "Cofundador técnico en Monterrey, México.",
       "Diseño, construyo y opero productos de software de punta a punta: el producto, la infraestructura, las integraciones de pagos y facturación, y los agentes de IA que se encargan de parte del trabajo.",
-      "Cofundador y CTO en Turboship y Octagon Labs.",
+      "Cofundador y CTO en Octagon Labs y Turboship.",
     ],
     links: [
       { label: "cv", href: "/es/cv" },
@@ -271,26 +258,6 @@ const es: LanderContent = {
   work: {
     cmd: "cat trabajo",
     companies: [
-      {
-        company: "Turboship",
-        role: "Cofundador y CTO",
-        period: "2023 – hoy",
-        about: "Software de envíos para negocios en México.",
-        items: [
-          {
-            name: "Turboship Carrier",
-            text: "Plataforma de envíos con varias paqueterías: cotización, guías y rastreo con 18 paqueterías, saldo prepagado por SPEI y facturación CFDI. Cada revendedor de marca blanca tiene su propia instancia aislada.",
-          },
-          {
-            text: "De julio de 2025 a julio de 2026 la red procesó cerca de 1.6 millones de envíos para 852 negocios a través de 9 revendedores.",
-          },
-          {
-            name: "Turboship WMS",
-            href: LINKS.turboship,
-            text: "Inventario, punto de venta y tiendas en línea para comercios, en un solo sistema.",
-          },
-        ],
-      },
       {
         company: "Octagon Labs",
         role: "Cofundador y CTO",
@@ -322,6 +289,26 @@ const es: LanderContent = {
           {
             name: "Timbra Chat",
             text: "Un agente que emite facturas CFDI: lee el ticket y llena el portal de facturación del comercio.",
+          },
+        ],
+      },
+      {
+        company: "Turboship",
+        role: "Cofundador y CTO",
+        period: "2023 – hoy",
+        about: "Software de envíos para negocios en México.",
+        items: [
+          {
+            name: "Turboship Carrier",
+            text: "Plataforma de envíos con varias paqueterías: cotización, guías y rastreo con 18 paqueterías, saldo prepagado por SPEI y facturación CFDI. Cada revendedor de marca blanca tiene su propia instancia aislada.",
+          },
+          {
+            text: "De julio de 2025 a julio de 2026 la red procesó cerca de 1.6 millones de envíos para 852 negocios a través de 9 revendedores.",
+          },
+          {
+            name: "Turboship WMS",
+            href: LINKS.turboship,
+            text: "Inventario, punto de venta y tiendas en línea para comercios, en un solo sistema.",
           },
         ],
       },
