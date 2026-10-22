@@ -198,7 +198,7 @@ export const lander: LanderContent = {
     cmd: "cat notes",
     lines: [
       "I like owning the whole thing, from the first commit to keeping it running.",
-      "I write software with coding agents every day, and I put agents inside products when they do a job better than a form would.",
+      "I write software with coding agents every day. In production, my agents do real work: they find leads, talk to customers, issue invoices and suggest what to improve next.",
       "I prefer plain, typed tools and servers I understand.",
     ],
   },
