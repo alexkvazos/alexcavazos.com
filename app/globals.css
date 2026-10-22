@@ -1,7 +1,158 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-body {
-  @apply bg-neutral-900;
+/*
+ * Design tokens. Dark (terminal) is the default; light is "warm paper".
+ *   - OS light preference applies unless the user forced dark (data-theme="dark").
+ *   - data-theme="light" forces light regardless of OS.
+ * Text tokens (fg, muted, subtle, accent, info, success, danger) meet WCAG AA (>= 4.5:1)
+ * on --bg, --surface and --surface-2 in both themes; accent-fg on accent fill too.
+ * --border / --border-strong are decorative only (not for text).
+ */
+:root {
+  color-scheme: dark;
+
+  --bg: #0a0a0b;
+  --surface: #111113;
+  --surface-2: #18181b;
+  --border: #222226;
+  --border-strong: #34343a;
+
+  --fg: #e7e7ea; /* 16.0:1 on bg */
+  --muted: #8a8a93; /* 5.8:1 on bg */
+  --subtle: #808089; /* 5.1:1 on bg, 4.5:1 on surface-2 */
+
+  --accent: #ffb224; /* amber, 11.0:1 on bg */
+  --accent-fg: #0a0a0b; /* text on accent fill */
+  --accent-soft: rgb(255 178 36 / 0.12);
+  --info: #5ccfe6; /* tool / info cyan, 10.9:1 */
+  --success: #7ee787; /* 12.9:1 */
+  --danger: #ff6b6b; /* 7.1:1 */
+
+  --selection: rgb(255 178 36 / 0.28);
+  --ring: #ffb224;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+
+    --bg: #fbfaf7;
+    --surface: #f3f1ea;
+    --surface-2: #ebe8df;
+    --border: #dedad0;
+    --border-strong: #c9c4b6;
+
+    --fg: #141414; /* 17.7:1 on bg */
+    --muted: #5c5b57; /* 6.5:1 */
+    --subtle: #6a6863; /* 5.3:1 on bg, 4.5:1 on surface-2 */
+
+    --accent: #a14f00; /* burnt amber, 5.5:1 on bg */
+    --accent-fg: #fbfaf7;
+    --accent-soft: rgb(161 79 0 / 0.1);
+    --info: #0b6477; /* 6.5:1 */
+    --success: #1b6e2e; /* 6.1:1 */
+    --danger: #b4231f; /* 6.3:1 */
+
+    --selection: rgb(161 79 0 / 0.2);
+    --ring: #a14f00;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #fbfaf7;
+  --surface: #f3f1ea;
+  --surface-2: #ebe8df;
+  --border: #dedad0;
+  --border-strong: #c9c4b6;
+
+  --fg: #141414;
+  --muted: #5c5b57;
+  --subtle: #6a6863;
+
+  --accent: #a14f00;
+  --accent-fg: #fbfaf7;
+  --accent-soft: rgb(161 79 0 / 0.1);
+  --info: #0b6477;
+  --success: #1b6e2e;
+  --danger: #b4231f;
+
+  --selection: rgb(161 79 0 / 0.2);
+  --ring: #a14f00;
+}
+
+/* Tailwind utilities: bg-bg, bg-surface, text-fg, text-muted, text-accent, border-border, font-mono, font-sans... */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-info: var(--info);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-ring: var(--ring);
+}
+
+/* next/font registers --font-jetbrains-mono / --font-inter on <html>; exposed as --font-mono / --font-sans. */
+@theme {
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--selection);
+    color: var(--fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@media print {
+  :root,
+  :root[data-theme] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --fg: #111111;
+    --muted: #444444;
+    --subtle: #555555;
+    --accent: #8a4300;
+  }
 }
