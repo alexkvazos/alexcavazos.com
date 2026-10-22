@@ -167,12 +167,13 @@ export default function Lander({ locale }: { locale: Locale }) {
               </a>
             ))}
           </nav>
-          <ReplayIntro label={c.boot.replay} />
           <ThemeToggle label={c.ui.themeToggle} />
         </div>
       </header>
 
-      <main id="main" className="flex-1 pt-6 pb-20 sm:pt-10 [&>section:first-child]:mt-0">
+      <main id="main" className="flex-1 pt-6 pb-20 sm:pt-10 [&>section:first-of-type]:mt-6">
+        <ReplayIntro label={c.boot.replay} />
+
         <Block id="whoami" cmd={c.intro.cmd}>
           <p className="font-semibold text-fg">{c.intro.name}</p>
           <h1 className="mt-2 text-[1.625rem] leading-tight font-semibold tracking-[-0.02em] text-balance text-fg sm:text-[2rem]">

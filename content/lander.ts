@@ -179,7 +179,7 @@ const en: LanderContent = {
         period: "2024 – now",
         about: "Payments for vending machines, micromarkets, parking and kiosks.",
         items: [
-          { text: "Built the platform that manages the card terminals, with Openpay, Mercado Pago and CFDI integrations." },
+          { text: "Built the platform that manages 1,300+ payment terminals across Mexico, with Openpay, Mercado Pago and CFDI integrations." },
           { text: "Led the team building the Android apps that run on the terminals." },
         ],
       },
@@ -318,7 +318,7 @@ const es: LanderContent = {
         period: "2024 – hoy",
         about: "Pagos para máquinas vending, micromercados, estacionamientos y kioscos.",
         items: [
-          { text: "Construí la plataforma que administra las terminales de pago, con integraciones de Openpay, Mercado Pago y CFDI." },
+          { text: "Construí la plataforma que administra más de 1,300 terminales de pago en México, con integraciones de Openpay, Mercado Pago y CFDI." },
           { text: "Dirigí al equipo que hace las apps Android de las terminales." },
         ],
       },

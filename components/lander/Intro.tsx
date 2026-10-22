@@ -186,25 +186,24 @@ export default function Intro({ lines, skip }: { lines: BootLine[]; skip: string
   );
 }
 
-/** Subtle header button that plays the intro again. */
+/** Subtle "replay intro" link above whoami. */
 export function ReplayIntro({ label }: { label: string }) {
   return (
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event(INTRO_REPLAY_EVENT))}
-      title={label}
-      aria-label={label}
-      className="grid size-8 place-items-center rounded-md text-subtle transition-colors hover:bg-surface-2 hover:text-fg"
+      className="inline-flex items-center gap-1.5 text-[12px] text-subtle transition-colors hover:text-fg"
     >
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
           d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"
           stroke="currentColor"
-          strokeWidth="1.8"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
       </svg>
+      {label}
     </button>
   );
 }

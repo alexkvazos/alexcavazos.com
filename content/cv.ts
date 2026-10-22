@@ -106,7 +106,7 @@ const en: CvContent = {
       location: "Monterrey",
       period: "Apr 2024 – Present",
       bullets: [
-        "Built the multi-tenant platform that manages the payment terminals, with Openpay, Mercado Pago and CFDI integrations.",
+        "Built the multi-tenant platform that manages 1,300+ payment terminals across Mexico, with Openpay, Mercado Pago and CFDI integrations.",
         "Led the team building the Android apps on PAX and Sunmi terminals; set up release pipelines and crash reporting.",
         "Introduced AI-assisted code review and agent-based development practices to the team.",
       ],
@@ -218,7 +218,7 @@ const es: CvContent = {
       location: "Monterrey",
       period: "Abr 2024 – Actualidad",
       bullets: [
-        "Construí la plataforma multi-tenant que administra las terminales de pago, con integraciones de Openpay, Mercado Pago y CFDI.",
+        "Construí la plataforma multi-tenant que administra más de 1,300 terminales de pago en México, con integraciones de Openpay, Mercado Pago y CFDI.",
         "Dirigí al equipo de las apps Android para terminales PAX y Sunmi; implementé pipelines de publicación y reporte de errores.",
         "Introduje revisión de código asistida por IA y prácticas de desarrollo con agentes en el equipo.",
       ],
