@@ -16,7 +16,7 @@ export function buildLlmsTxt(c: LanderContent): string {
     out.push(co.about);
     for (const it of co.items) {
       const name = it.name ? `${it.name}${it.href ? ` (${it.href})` : ""}: ` : "";
-      out.push(`- ${name}${it.text}`);
+      out.push(`- ${name}${it.text.replace(/\*\*/g, "")}`);
     }
     out.push("");
   }

@@ -45,6 +45,38 @@ function A({ href, children, className = "" }: { href: string; children: ReactNo
   );
 }
 
+/** Product / company link in the timeline: colored, underlined, with an external-link icon. */
+function Ext({ href, children, strong }: { href: string; children: ReactNode; strong?: boolean }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-baseline gap-1 text-tool underline decoration-tool/40 underline-offset-4 transition-colors hover:decoration-tool ${
+        strong ? "font-semibold" : ""
+      }`}
+    >
+      {children}
+      <svg
+        width="11"
+        height="11"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+        className="shrink-0 self-center opacity-80"
+      >
+        <path
+          d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </a>
+  );
+}
+
 /** A block that reads like a command typed at a prompt, followed by its output. */
 function Block({ id, cmd, children }: { id: string; cmd: string; children: ReactNode }) {
   return (
@@ -69,6 +101,23 @@ function LinkRow({ links }: { links: Link[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+/** Renders **KPI** markers as bold, high-contrast text. */
+function Kpi({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+        i % 2 ? (
+          <strong key={i} className="font-semibold text-fg">
+            {part}
+          </strong>
+        ) : (
+          part
+        ),
+      )}
+    </>
   );
 }
 
@@ -103,9 +152,9 @@ function CompanyEntry({ c }: { c: Company }) {
     <Node period={c.period} className="pb-14">
       <h3>
         {c.href ? (
-          <A href={c.href} className="font-semibold text-fg">
+          <Ext href={c.href} strong>
             {c.company}
-          </A>
+          </Ext>
         ) : (
           <span className="font-semibold text-fg">{c.company}</span>
         )}
@@ -118,16 +167,14 @@ function CompanyEntry({ c }: { c: Company }) {
             {it.name && (
               <>
                 {it.href ? (
-                  <A href={it.href} className="text-fg">
-                    {it.name}
-                  </A>
+                  <Ext href={it.href}>{it.name}</Ext>
                 ) : (
                   <span className="text-fg">{it.name}</span>
                 )}
                 {". "}
               </>
             )}
-            {it.text}
+            <Kpi text={it.text} />
           </li>
         ))}
       </ul>

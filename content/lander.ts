@@ -6,7 +6,7 @@ export type Locale = "en" | "es";
 
 export type Link = { label: string; href: string };
 
-/** One thing built at a company. `name` is optional for plain statements. */
+/** One thing built at a company. `name` is optional for plain statements. `text` may mark KPIs as **bold**. */
 export type Item = { name?: string; href?: string; text: string };
 
 export type Company = {
@@ -140,7 +140,7 @@ const en: LanderContent = {
           },
           {
             name: "Sales agents",
-            text: "Browser agents that find and qualify leads on Google Maps and in Facebook groups. They have collected 7,549 leads across Mexico, Canada, Colombia and Brazil.",
+            text: "Browser agents that find and qualify leads on Google Maps and in Facebook groups. They have collected **7,549 leads** across Mexico, Canada, Colombia and Brazil.",
           },
           {
             name: "Infrastructure",
@@ -176,7 +176,7 @@ const en: LanderContent = {
             text: "A multi-carrier shipping platform: quotes, labels and tracking across 18 carriers, prepaid balances funded over SPEI, and CFDI e-invoicing. Each white-label reseller runs its own isolated instance.",
           },
           {
-            text: "From July 2025 to July 2026 the network processed about 1.6M shipments for 852 businesses through 9 resellers.",
+            text: "From July 2025 to July 2026 the network processed **about 1.6M shipments** for **852 businesses** through **9 resellers**.",
           },
           {
             name: "Turboship WMS",
@@ -192,7 +192,7 @@ const en: LanderContent = {
         period: "2024 – now",
         about: "Payments for vending machines, micromarkets, parking and kiosks.",
         items: [
-          { text: "Built the platform that manages 1,300+ payment terminals across Mexico, with Openpay, Mercado Pago and CFDI integrations." },
+          { text: "Built the platform that manages **1,300+ payment terminals** across Mexico, with Openpay, Mercado Pago and CFDI integrations." },
           { text: "Led the team building the Android apps that run on the terminals." },
         ],
       },
@@ -286,7 +286,7 @@ const es: LanderContent = {
           },
           {
             name: "Agentes de ventas",
-            text: "Agentes de navegador que encuentran y califican prospectos en Google Maps y en grupos de Facebook. Llevan 7,549 prospectos en México, Canadá, Colombia y Brasil.",
+            text: "Agentes de navegador que encuentran y califican prospectos en Google Maps y en grupos de Facebook. Llevan **7,549 prospectos** en México, Canadá, Colombia y Brasil.",
           },
           {
             name: "Infraestructura",
@@ -322,7 +322,7 @@ const es: LanderContent = {
             text: "Plataforma de envíos con varias paqueterías: cotización, guías y rastreo con 18 paqueterías, saldo prepagado por SPEI y facturación CFDI. Cada revendedor de marca blanca tiene su propia instancia aislada.",
           },
           {
-            text: "De julio de 2025 a julio de 2026 la red procesó cerca de 1.6 millones de envíos para 852 negocios a través de 9 revendedores.",
+            text: "De julio de 2025 a julio de 2026 la red procesó **cerca de 1.6 millones de envíos** para **852 negocios** a través de **9 revendedores**.",
           },
           {
             name: "Turboship WMS",
@@ -338,7 +338,7 @@ const es: LanderContent = {
         period: "2024 – hoy",
         about: "Pagos para máquinas vending, micromercados, estacionamientos y kioscos.",
         items: [
-          { text: "Construí la plataforma que administra más de 1,300 terminales de pago en México, con integraciones de Openpay, Mercado Pago y CFDI." },
+          { text: "Construí la plataforma que administra **más de 1,300 terminales de pago** en México, con integraciones de Openpay, Mercado Pago y CFDI." },
           { text: "Dirigí al equipo que hace las apps Android de las terminales." },
         ],
       },
