@@ -80,7 +80,7 @@ const en: CvContent = {
       location: "Monterrey",
       period: "Jan 2025 – Present",
       bullets: [
-        "Built HQ, the studio's operations console: revenue reporting from each company, a shared lead database and the controls for its AI agents. It replaced three legacy systems.",
+        "Built HQ, the studio's operations console: revenue reporting from each company, a shared lead database and the controls for its AI agents.",
         "Designed and run autonomous browser agents that find and qualify leads on Google Maps and Facebook: 7,549 leads across Mexico, Canada, Colombia and Brazil.",
         "Built EventKit (event ticketing with Wallet passes, QR check-in and an Android door scanner), FanKit (Wallet loyalty cards) and Timbra Chat (an agent that issues CFDI invoices from receipts).",
         "Run the studio's products on self-hosted infrastructure: Postgres, Redis, object storage, Cloudflare Tunnel and self-hosted CI runners, with automatic rollback and daily verified backups.",
@@ -192,7 +192,7 @@ const es: CvContent = {
       location: "Monterrey",
       period: "Ene 2025 – Actualidad",
       bullets: [
-        "Construí HQ, la consola de operación del estudio: ingresos de cada empresa, una base de prospectos compartida y los controles de sus agentes de IA. Reemplazó tres sistemas anteriores.",
+        "Construí HQ, la consola de operación del estudio: ingresos de cada empresa, una base de prospectos compartida y los controles de sus agentes de IA.",
         "Diseñé y opero agentes autónomos de navegador que encuentran y califican prospectos en Google Maps y Facebook: 7,549 prospectos en México, Canadá, Colombia y Brasil.",
         "Construí EventKit (boletaje con pases de Wallet, check-in con QR y escáner Android), FanKit (tarjetas de lealtad en Wallet) y Timbra Chat (un agente que emite facturas CFDI a partir de tickets).",
         "Opero los productos del estudio en infraestructura propia: Postgres, Redis, almacenamiento de objetos, Cloudflare Tunnel y runners de CI propios, con reversión automática y respaldos diarios verificados.",
