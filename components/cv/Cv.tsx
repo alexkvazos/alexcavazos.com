@@ -1,26 +1,33 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { cv, type CvContent, type CvRole } from "@/content/cv";
-import { CV_PDF, OG_LOCALE, absoluteUrl, alternatesFor, localePath, otherLocale, type Locale } from "@/lib/site";
+import { CV_PDF, LINKS } from "@/lib/site";
 import s from "./cv.module.css";
 
-/** Per-locale metadata for /cv and /es/cv (used by the two thin page wrappers). */
-export function cvMetadata(locale: Locale): Metadata {
-  const { meta } = cv[locale];
-  return {
-    title: { absolute: meta.title },
-    description: meta.description,
-    alternates: alternatesFor(locale, "/cv"),
-    robots: { index: true, follow: true },
-    openGraph: {
-      type: "profile",
-      title: meta.title,
-      description: meta.description,
-      url: absoluteUrl(locale, "/cv"),
-      locale: OG_LOCALE[locale],
-    },
-    twitter: { card: "summary_large_image", title: meta.title, description: meta.description, creator: "@alexkvazos_" },
-  };
-}
+/** Metadata for /cv. The OG/Twitter image comes from app/cv/opengraph-image.tsx and twitter-image.tsx. */
+export const cvMetadata: Metadata = {
+  title: { absolute: cv.meta.title },
+  description: cv.meta.description,
+  alternates: { canonical: "/cv" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "profile",
+    firstName: "Alejandro",
+    lastName: "Cavazos",
+    title: cv.meta.title,
+    description: cv.meta.description,
+    url: "/cv",
+    siteName: "Alex Cavazos",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: cv.meta.title,
+    description: cv.meta.description,
+    creator: LINKS.xHandle,
+    site: LINKS.xHandle,
+  },
+};
 
 function isExternal(href: string) {
   return href.startsWith("http");
@@ -152,25 +159,19 @@ function Sheet({ c }: { c: CvContent }) {
   );
 }
 
-export default function Cv({ locale }: { locale: Locale }) {
-  const c = cv[locale];
-  const other = otherLocale(locale);
-
+export default function Cv() {
   return (
     <div className={s.page}>
       <nav className={s.toolbar} aria-label="CV">
-        <a href={localePath(locale, "/")} className={s.tool}>
-          <span aria-hidden="true">←</span> {c.labels.backToSite}
-        </a>
+        <Link href="/" className={s.tool}>
+          <span aria-hidden="true">←</span> {cv.labels.backToSite}
+        </Link>
         <span className={s.toolSpacer} />
-        <a href={c.labels.otherLang.href} hrefLang={other} lang={other} className={s.tool}>
-          {c.labels.otherLang.label}
-        </a>
-        <a href={CV_PDF[locale]} className={`${s.tool} ${s.toolPrimary}`} type="application/pdf">
-          {c.labels.download}
+        <a href={CV_PDF} className={`${s.tool} ${s.toolPrimary}`} type="application/pdf">
+          {cv.labels.download}
         </a>
       </nav>
-      <Sheet c={c} />
+      <Sheet c={cv} />
     </div>
   );
 }

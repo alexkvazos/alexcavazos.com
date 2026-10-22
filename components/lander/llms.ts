@@ -1,7 +1,7 @@
 import type { LanderContent } from "@/content/lander";
-import { CV_PDF, LINKS, SITE_URL, absoluteUrl } from "@/lib/site";
+import { CV_PDF, LINKS, SITE_URL } from "@/lib/site";
 
-/** /llms.txt — a plain markdown summary of Alex for AI agents, built from content/lander.ts (EN). */
+/** /llms.txt — a plain markdown summary of Alex for AI agents, built from content/lander.ts. */
 export function buildLlmsTxt(c: LanderContent): string {
   const out: string[] = [];
 
@@ -33,8 +33,8 @@ export function buildLlmsTxt(c: LanderContent): string {
   out.push("");
 
   out.push("## Links");
-  out.push(`- CV: ${absoluteUrl("en", "/cv")} · ${absoluteUrl("es", "/cv")}`);
-  out.push(`- CV PDF: ${SITE_URL}${CV_PDF.en} · ${SITE_URL}${CV_PDF.es}`);
+  out.push(`- CV: ${SITE_URL}/cv`);
+  out.push(`- CV PDF: ${SITE_URL}${CV_PDF}`);
   out.push(`- Email: ${LINKS.email}`);
   out.push(`- GitHub: ${LINKS.github}`);
   out.push(`- LinkedIn: ${LINKS.linkedin}`);

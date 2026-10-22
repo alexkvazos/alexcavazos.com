@@ -5,9 +5,13 @@ const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   reactStrictMode: true,
   poweredByHeader: false,
-  experimental: {
-    // Two root layouts (app/(en), app/(es)) => no single layout to compose a 404 from.
-    globalNotFound: true,
+  // The site is English only; the old Spanish routes and PDFs land on their English versions.
+  async redirects() {
+    return [
+      { source: "/es", destination: "/", permanent: true },
+      { source: "/es/cv", destination: "/cv", permanent: true },
+      { source: "/alejandro-cavazos-cv-:lang(en|es).pdf", destination: "/alejandro-cavazos-cv.pdf", permanent: true },
+    ];
   },
 };
 

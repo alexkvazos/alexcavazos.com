@@ -1,8 +1,6 @@
-// Landing-page copy for alexcavazos.com (EN / ES).
+// Landing-page copy for alexcavazos.com (English only).
 // Every claim must trace back to content/facts.md (local only).
 // Voice: first person, plain, specific. No hype, no vanity metrics (commits, lines, tests, tokens).
-
-export type Locale = "en" | "es";
 
 export type Link = { label: string; href: string };
 
@@ -31,8 +29,6 @@ export type LanderContent = {
   ui: {
     skipToContent: string;
     themeToggle: string;
-    langLabel: string;
-    langSwitch: Link;
     place: string;
   };
   boot: { lines: BootLine[]; skip: string; replay: string };
@@ -52,8 +48,7 @@ export const LINKS = {
   github: "https://github.com/alexkvazos",
   linkedin: "https://www.linkedin.com/in/alejandro-cavazos-76a488b9",
   x: "https://x.com/alexkvazos_",
-  cvPdfEn: "/alejandro-cavazos-cv-en.pdf",
-  cvPdfEs: "/alejandro-cavazos-cv-es.pdf",
+  cvPdf: "/alejandro-cavazos-cv.pdf",
   eventkit: "https://eventkit.octagonlabs.ai",
   turboshipCarrier: "https://turboship.mx/carrier/",
   turboshipWms: "https://turboship.mx/wms/",
@@ -79,11 +74,7 @@ const stackLines = [
   "Vercel, DigitalOcean, my own servers, GitHub Actions",
 ];
 
-// ---------------------------------------------------------------------------
-// English
-// ---------------------------------------------------------------------------
-
-const en: LanderContent = {
+export const lander: LanderContent = {
   meta: {
     title: "Alex Cavazos — I ship companies, not features",
     description:
@@ -92,8 +83,6 @@ const en: LanderContent = {
   ui: {
     skipToContent: "Skip to content",
     themeToggle: "Toggle theme",
-    langLabel: "Language",
-    langSwitch: { label: "es", href: "/es" },
     place: "Monterrey, MX",
   },
   boot: {
@@ -218,160 +207,9 @@ const en: LanderContent = {
     cmd: "open cv",
     links: [
       { label: "read online", href: "/cv" },
-      { label: "pdf, english", href: LINKS.cvPdfEn },
-      { label: "pdf, español", href: LINKS.cvPdfEs },
+      { label: "download pdf", href: LINKS.cvPdf },
     ],
   },
   contact: { cmd: "contact", links: contactLinks },
 };
 
-// ---------------------------------------------------------------------------
-// Español (MX)
-// ---------------------------------------------------------------------------
-
-const es: LanderContent = {
-  meta: {
-    title: "Alex Cavazos — No entrego features. Entrego empresas.",
-    description:
-      "Cofundador técnico en Monterrey, México. Diseño, construyo y opero productos de software de punta a punta, incluidos los agentes de IA que se encargan de parte del trabajo.",
-  },
-  ui: {
-    skipToContent: "Saltar al contenido",
-    themeToggle: "Cambiar tema",
-    langLabel: "Idioma",
-    langSwitch: { label: "en", href: "/" },
-    place: "Monterrey, MX",
-  },
-  boot: {
-    skip: "presiona cualquier tecla para saltar",
-    replay: "repetir intro",
-    lines: [
-      { kind: "user", text: "arma alexcavazos.com y publícalo" },
-      { kind: "tool", tool: "Read", args: "content/work.md", output: "Octagon Labs · Turboship · Terpa Solutions" },
-      { kind: "tool", tool: "Write", args: "app/es/page.tsx", output: "whoami, trabajo, notas, stack, cv, contacto" },
-      { kind: "tool", tool: "Bash", args: "npm run build", output: "✓ compilado, 4 páginas" },
-      { kind: "tool", tool: "Bash", args: "octagon deploy --prod", output: "✓ alexcavazos.com/es" },
-      { kind: "done", text: "El sitio está listo" },
-    ],
-  },
-  intro: {
-    cmd: "whoami",
-    name: "Alex Cavazos",
-    headline: "No entrego features. Entrego empresas.",
-    lines: [
-      "Cofundador técnico en Monterrey, México.",
-      "Diseño, construyo y opero productos de software de punta a punta: el producto, la infraestructura, las integraciones de pagos y facturación, y los agentes de IA que se encargan de parte del trabajo.",
-      "Cofundador y CTO en Octagon Labs y Turboship.",
-    ],
-    links: [
-      { label: "cv", href: "/es/cv" },
-      { label: "correo", href: LINKS.email },
-      { label: "github", href: LINKS.github },
-      { label: "linkedin", href: LINKS.linkedin },
-    ],
-  },
-  work: {
-    cmd: "cat trabajo",
-    companies: [
-      {
-        company: "Octagon Labs",
-        href: LINKS.octagon,
-        role: "Cofundador y CTO",
-        period: "2025 – hoy",
-        about: "Un estudio que construye y opera sus propias empresas de software.",
-        items: [
-          {
-            name: "HQ",
-            text: "La consola de operación del estudio: ingresos de cada empresa, una base de prospectos compartida y los controles de nuestros agentes.",
-          },
-          {
-            name: "Agentes de ventas",
-            text: "Agentes de navegador que encuentran y califican prospectos en Google Maps y en grupos de Facebook. Llevan **7,549 prospectos** en México, Canadá, Colombia y Brasil.",
-          },
-          {
-            name: "Infraestructura",
-            text: "Los productos del estudio corren en servidores propios que operamos nosotros: Postgres, Redis y almacenamiento de objetos, un túnel de Cloudflare al frente, runners de CI propios, despliegues que se revierten solos si fallan y respaldos diarios verificados.",
-          },
-          {
-            name: "EventKit",
-            href: LINKS.eventkit,
-            text: "Boletaje para organizadores de eventos en Latinoamérica: boletos pagados y RSVP, pases de Wallet, check-in con QR y un escáner Android para la entrada.",
-          },
-          {
-            name: "FanKit",
-            href: LINKS.fankit,
-            text: "Tarjetas de lealtad que viven en Apple Wallet y Google Wallet.",
-          },
-          {
-            name: "Timbra Chat",
-            href: LINKS.timbrachat,
-            text: "Un agente que emite facturas CFDI: lee el ticket y llena el portal de facturación del comercio.",
-          },
-        ],
-      },
-      {
-        company: "Turboship",
-        href: LINKS.turboship,
-        role: "Cofundador y CTO",
-        period: "2023 – hoy",
-        about: "Software de envíos para negocios en México.",
-        items: [
-          {
-            name: "Turboship Carrier",
-            href: LINKS.turboshipCarrier,
-            text: "Plataforma de envíos con varias paqueterías: cotización, guías y rastreo con 18 paqueterías, saldo prepagado por SPEI y facturación CFDI. Cada revendedor de marca blanca tiene su propia instancia aislada.",
-          },
-          {
-            text: "De julio de 2025 a julio de 2026 la red procesó **cerca de 1.6 millones de envíos** para **852 negocios** a través de **9 revendedores**.",
-          },
-          {
-            name: "Turboship WMS",
-            href: LINKS.turboshipWms,
-            text: "Inventario, punto de venta y tiendas en línea para comercios, en un solo sistema.",
-          },
-        ],
-      },
-      {
-        company: "Terpa Solutions",
-        href: LINKS.terpa,
-        role: "Asesor técnico · líder de tecnología hasta 2026",
-        period: "2024 – hoy",
-        about: "Pagos para máquinas vending, micromercados, estacionamientos y kioscos.",
-        items: [
-          { text: "Construí la plataforma que administra **más de 1,300 terminales de pago** en México, con integraciones de Openpay, Mercado Pago y CFDI." },
-          { text: "Dirigí al equipo que hace las apps Android de las terminales." },
-        ],
-      },
-    ],
-    earlierLabel: "Antes",
-    earlier: [
-      { title: "Ingeniero de software, tech lead", company: "Caring (contrato)", period: "2025" },
-      { title: "Ingeniero de software, tech lead", company: "Able (contrato)", period: "2021 – 2024" },
-      { title: "Ingeniero de software", company: "PayPal (contrato)", period: "2021" },
-      { title: "Remote Software Development & Consulting for US companies", period: "2014 – 2020" },
-    ],
-  },
-  notes: {
-    cmd: "cat notas",
-    lines: [
-      "Me gusta hacerme cargo de todo, desde el primer commit hasta mantenerlo funcionando.",
-      "Programo con agentes todos los días, y meto agentes en los productos cuando hacen un trabajo mejor que un formulario.",
-      "Prefiero herramientas simples y tipadas, y servidores que entiendo.",
-    ],
-  },
-  stack: {
-    cmd: "cat stack",
-    lines: stackLines.map((l) => l.replace("my own servers", "servidores propios")),
-  },
-  cv: {
-    cmd: "open cv",
-    links: [
-      { label: "leer en línea", href: "/es/cv" },
-      { label: "pdf, español", href: LINKS.cvPdfEs },
-      { label: "pdf, english", href: LINKS.cvPdfEn },
-    ],
-  },
-  contact: { cmd: "contacto", links: contactLinks },
-};
-
-export const lander: Record<Locale, LanderContent> = { en, es };

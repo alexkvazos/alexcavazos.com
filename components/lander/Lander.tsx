@@ -1,11 +1,12 @@
+import NextLink from "next/link";
 import type { ReactNode } from "react";
 import { lander, type Company, type Link } from "@/content/lander";
-import { LINKS, SITE_URL, absoluteUrl, localePath, type Locale } from "@/lib/site";
+import { LINKS, SITE_URL } from "@/lib/site";
 import Intro, { INTRO_BOOT_SCRIPT, ReplayIntro } from "./Intro";
 import ThemeToggle from "./ThemeToggle";
 import "./lander.css";
 
-function personJsonLd(locale: Locale) {
+function personJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -13,8 +14,8 @@ function personJsonLd(locale: Locale) {
     name: "Alejandro Cavazos",
     alternateName: "Alex Cavazos",
     jobTitle: "Co-Founder & CTO",
-    description: lander[locale].meta.description,
-    url: absoluteUrl(locale, "/"),
+    description: lander.meta.description,
+    url: SITE_URL,
     email: LINKS.mailto,
     address: {
       "@type": "PostalAddress",
@@ -182,15 +183,14 @@ function CompanyEntry({ c }: { c: Company }) {
   );
 }
 
-export default function Lander({ locale }: { locale: Locale }) {
-  const c = lander[locale];
-  const langs: Locale[] = ["en", "es"];
+export default function Lander() {
+  const c = lander;
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-[44rem] flex-col px-4 text-[14px] leading-[1.75] sm:px-6 sm:text-[15px]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(locale)).replace(/</g, "\\u003c") }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()).replace(/</g, "\\u003c") }}
       />
       <script dangerouslySetInnerHTML={{ __html: INTRO_BOOT_SCRIPT }} />
       <Intro lines={c.boot.lines} skip={c.boot.skip} />
@@ -202,24 +202,10 @@ export default function Lander({ locale }: { locale: Locale }) {
       </a>
 
       <header className="flex items-center justify-between py-6 text-[13px] text-subtle">
-        <a href={localePath(locale)} className="hover:text-fg">
+        <NextLink href="/" className="hover:text-fg">
           alex@cavazos <span className="text-muted">~</span>
-        </a>
+        </NextLink>
         <div className="flex items-center gap-2">
-          <nav aria-label={c.ui.langLabel} className="flex gap-2">
-            {langs.map((l) => (
-              <a
-                key={l}
-                href={localePath(l)}
-                hrefLang={l}
-                lang={l}
-                aria-current={l === locale ? "page" : undefined}
-                className={l === locale ? "text-fg" : "hover:text-fg"}
-              >
-                {l}
-              </a>
-            ))}
-          </nav>
           <ThemeToggle label={c.ui.themeToggle} />
         </div>
       </header>

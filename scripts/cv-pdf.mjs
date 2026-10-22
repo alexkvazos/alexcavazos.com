@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Renders the CV pages to static PDFs in public/.
+ * Renders the CV page to a static PDF in public/.
  *
  *   npm run build && npm start -- -p 3102   (or any running server)
  *   npm run cv:pdf [-- http://localhost:3102]
@@ -19,10 +19,7 @@ const baseUrl = (process.argv[2] || process.env.CV_BASE_URL || "http://localhost
 const executablePath = process.env.CHROMIUM_PATH || "/usr/bin/chromium";
 const MAX_PAGES = 2;
 
-const targets = [
-  { locale: "en", path: "/cv", out: "public/alejandro-cavazos-cv-en.pdf", title: "Alejandro Cavazos — CV" },
-  { locale: "es", path: "/es/cv", out: "public/alejandro-cavazos-cv-es.pdf", title: "Alejandro Cavazos — Currículum" },
-];
+const targets = [{ path: "/cv", out: "public/alejandro-cavazos-cv.pdf", title: "Alejandro Cavazos — CV" }];
 
 /** Page count from the PDF itself: the page tree root's /Count, else count /Type /Page objects. */
 function countPages(buf) {
@@ -65,7 +62,7 @@ try {
     const ok = pages >= 1 && pages <= MAX_PAGES;
     if (!ok) failed = true;
     console.log(
-      `${ok ? "ok  " : "FAIL"} ${t.locale}  ${url} -> ${relative(root, outPath)}  ${pages} page${pages === 1 ? "" : "s"}  ${(pdf.length / 1024).toFixed(0)} KB`,
+      `${ok ? "ok  " : "FAIL"}  ${url} -> ${relative(root, outPath)}  ${pages} page${pages === 1 ? "" : "s"}  ${(pdf.length / 1024).toFixed(0)} KB`,
     );
     await page.close();
   }
