@@ -26,7 +26,7 @@ function personJsonLd(locale: Locale) {
     sameAs: [LINKS.github, LINKS.linkedin, LINKS.x],
     worksFor: [
       { "@type": "Organization", name: "Octagon Labs" },
-      { "@type": "Organization", name: "Turboship", url: "https://turboship.app" },
+      { "@type": "Organization", name: "Turboship", url: "https://turboship.mx" },
     ],
   };
 }

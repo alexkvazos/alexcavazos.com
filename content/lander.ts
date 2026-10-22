@@ -54,7 +54,8 @@ export const LINKS = {
   cvPdfEn: "/alejandro-cavazos-cv-en.pdf",
   cvPdfEs: "/alejandro-cavazos-cv-es.pdf",
   eventkit: "https://eventkit.octagonlabs.ai",
-  turboship: "https://turboship.app",
+  turboshipCarrier: "https://turboship.mx/carrier/",
+  turboshipWms: "https://turboship.mx/wms/",
   fankit: "https://fankit.io",
   timbrachat: "https://timbrachat.ai",
 } as const;
@@ -165,6 +166,7 @@ const en: LanderContent = {
         items: [
           {
             name: "Turboship Carrier",
+            href: LINKS.turboshipCarrier,
             text: "A multi-carrier shipping platform: quotes, labels and tracking across 18 carriers, prepaid balances funded over SPEI, and CFDI e-invoicing. Each white-label reseller runs its own isolated instance.",
           },
           {
@@ -172,7 +174,7 @@ const en: LanderContent = {
           },
           {
             name: "Turboship WMS",
-            href: LINKS.turboship,
+            href: LINKS.turboshipWms,
             text: "Inventory, point of sale and online stores for merchants, in one system.",
           },
         ],
@@ -307,6 +309,7 @@ const es: LanderContent = {
         items: [
           {
             name: "Turboship Carrier",
+            href: LINKS.turboshipCarrier,
             text: "Plataforma de envíos con varias paqueterías: cotización, guías y rastreo con 18 paqueterías, saldo prepagado por SPEI y facturación CFDI. Cada revendedor de marca blanca tiene su propia instancia aislada.",
           },
           {
@@ -314,7 +317,7 @@ const es: LanderContent = {
           },
           {
             name: "Turboship WMS",
-            href: LINKS.turboship,
+            href: LINKS.turboshipWms,
             text: "Inventario, punto de venta y tiendas en línea para comercios, en un solo sistema.",
           },
         ],
