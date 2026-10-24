@@ -76,7 +76,7 @@ const stackLines = [
 
 export const lander: LanderContent = {
   meta: {
-    title: "Alex Cavazos — I ship companies, not features",
+    title: "Alex Cavazos — I build software, and the agents that help run it",
     description:
       "Technical co-founder in Monterrey, Mexico. I design, build and run software products end to end, including the AI agents that handle parts of the work.",
   },
@@ -118,10 +118,8 @@ export const lander: LanderContent = {
   intro: {
     cmd: "whoami",
     name: "Alex Cavazos",
-    headline: "I ship companies, not features.",
+    headline: "I build software, and the agents that help run it.",
     lines: [
-      "Technical co-founder in Monterrey, Mexico.",
-      "I design, build and run software products end to end: the product, the infrastructure, the payments and tax integrations, and the AI agents that handle parts of the work.",
       "Co-founder and CTO at Octagon Labs and Turboship.",
     ],
     links: [
