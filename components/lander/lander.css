@@ -58,6 +58,10 @@ html.intro .intro-overlay {
   }
 }
 
+.copy-toast {
+  animation: intro-done-in 0.2s ease-out both;
+}
+
 /* Theme toggle icon (moon in dark, sun in light). */
 .theme-toggle .icon-sun {
   display: none;

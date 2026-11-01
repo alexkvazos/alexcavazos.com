@@ -39,6 +39,7 @@ export type LanderContent = {
   stack: { cmd: string; lines: string[] };
   cv: { cmd: string; links: Link[] };
   contact: { cmd: string; links: Link[] };
+  crypto: { cmd: string; label: string; address: string; copied: string; copyFailed: string };
 };
 
 export const EMAIL = "me@alexcavazos.com";
@@ -109,7 +110,7 @@ export const lander: LanderContent = {
           "└─ terminal-platform",
         ],
       },
-      { kind: "tool", tool: "Write", args: "app/page.tsx", output: ["whoami, work, notes, stack, cv, contact"] },
+      { kind: "tool", tool: "Write", args: "app/page.tsx", output: ["whoami, work, notes, stack, cv, contact, crypto"] },
       { kind: "tool", tool: "Bash", args: "npm run build", output: ["✓ compiled"] },
       { kind: "tool", tool: "Bash", args: "octagon deploy --prod", output: ["✓ alexcavazos.com"] },
       { kind: "done", text: "Website is ready" },
@@ -228,5 +229,12 @@ export const lander: LanderContent = {
     ],
   },
   contact: { cmd: "contact", links: contactLinks },
+  crypto: {
+    cmd: "crypto",
+    label: "Ethereum",
+    address: "0x32Acb067E117058EDAAe6b9143586c5AE0b87534",
+    copied: "Address copied to clipboard",
+    copyFailed: "Couldn't copy the address",
+  },
 };
 

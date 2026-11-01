@@ -39,6 +39,7 @@ export function buildLlmsTxt(c: LanderContent): string {
   out.push(`- GitHub: ${LINKS.github}`);
   out.push(`- LinkedIn: ${LINKS.linkedin}`);
   out.push(`- X: ${LINKS.x}`);
+  out.push(`- ${c.crypto.label}: ${c.crypto.address}`);
   out.push("");
 
   return out.join("\n");
