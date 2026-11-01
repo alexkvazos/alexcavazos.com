@@ -24,6 +24,8 @@ export type BootLine =
 
 export type EarlierRole = { title: string; company?: string; period: string };
 
+export type Wallet = { chain: "ethereum" | "bitcoin"; label: string; address: string };
+
 export type LanderContent = {
   meta: { title: string; description: string };
   ui: {
@@ -39,7 +41,7 @@ export type LanderContent = {
   stack: { cmd: string; lines: string[] };
   cv: { cmd: string; links: Link[] };
   contact: { cmd: string; links: Link[] };
-  crypto: { cmd: string; label: string; address: string; copied: string; copyFailed: string };
+  crypto: { cmd: string; wallets: Wallet[]; copied: string; copyFailed: string };
 };
 
 export const EMAIL = "me@alexcavazos.com";
@@ -231,8 +233,10 @@ export const lander: LanderContent = {
   contact: { cmd: "contact", links: contactLinks },
   crypto: {
     cmd: "crypto",
-    label: "Ethereum",
-    address: "0x32Acb067E117058EDAAe6b9143586c5AE0b87534",
+    wallets: [
+      { chain: "ethereum", label: "Ethereum", address: "0x32Acb067E117058EDAAe6b9143586c5AE0b87534" },
+      { chain: "bitcoin", label: "Bitcoin", address: "bc1qfevgh58mmnvd93fry6kegwxhzmk9p65vmhk8lt" },
+    ],
     copied: "Address copied to clipboard",
     copyFailed: "Couldn't copy the address",
   },

@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import type { ReactNode } from "react";
 import { lander, type Company, type Link } from "@/content/lander";
 import { LINKS, SITE_URL } from "@/lib/site";
-import CopyAddress from "./CopyAddress";
+import CryptoWallets from "./CryptoWallets";
 import Intro, { INTRO_BOOT_SCRIPT, ReplayIntro } from "./Intro";
 import ThemeToggle from "./ThemeToggle";
 import "./lander.css";
@@ -276,12 +276,7 @@ export default function Lander() {
         </Block>
 
         <Block id="crypto" cmd={c.crypto.cmd}>
-          <CopyAddress
-            label={c.crypto.label}
-            address={c.crypto.address}
-            copied={c.crypto.copied}
-            failed={c.crypto.copyFailed}
-          />
+          <CryptoWallets wallets={c.crypto.wallets} copied={c.crypto.copied} failed={c.crypto.copyFailed} />
         </Block>
 
       </main>

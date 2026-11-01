@@ -39,7 +39,7 @@ export function buildLlmsTxt(c: LanderContent): string {
   out.push(`- GitHub: ${LINKS.github}`);
   out.push(`- LinkedIn: ${LINKS.linkedin}`);
   out.push(`- X: ${LINKS.x}`);
-  out.push(`- ${c.crypto.label}: ${c.crypto.address}`);
+  for (const w of c.crypto.wallets) out.push(`- ${w.label}: ${w.address}`);
   out.push("");
 
   return out.join("\n");
