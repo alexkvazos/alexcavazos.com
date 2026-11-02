@@ -7,3 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+# Keep llms.txt in sync with the landing page
+
+Any change to the landing page must also update `/llms.txt`, in the same commit. `components/lander/llms.ts` builds it from `content/lander.ts`, but it picks each section by hand, so new sections and fields don't appear there on their own.
