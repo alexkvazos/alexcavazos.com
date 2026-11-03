@@ -70,7 +70,7 @@ export const cv: CvContent = {
     "Technical co-founder and CTO who designs, builds and operates software products end to end: architecture, infrastructure, payments and Mexican tax compliance, and AI agents in production.",
   experience: [
     {
-      title: "CTO",
+      title: "Co-Founder & CTO",
       company: "Bodego AI",
       companyNote: "Warehouse management system born with AI",
       location: "Monterrey",

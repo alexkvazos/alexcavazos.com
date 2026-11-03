@@ -80,7 +80,7 @@ export const lander: LanderContent = {
   meta: {
     title: "Alex Cavazos — I build software, and the agents that help run it",
     description:
-      "CTO at Bodego AI, co-founder and CTO at Turboship and Octagon Labs, in Monterrey, Mexico. I design, build and run software products end to end.",
+      "Co-founder and CTO at Bodego AI and Turboship, in Monterrey, Mexico. I design, build and run software products end to end.",
   },
   ui: {
     skipToContent: "Skip to content",
@@ -124,7 +124,7 @@ export const lander: LanderContent = {
     name: "Alex Cavazos",
     headline: "I build software, and the agents that help run it.",
     lines: [
-      "CTO at Bodego AI. Co-founder and CTO at Turboship and Octagon Labs.",
+      "Co-founder and CTO at Bodego AI and Turboship.",
     ],
     links: [
       { label: "cv", href: "/cv" },
@@ -139,7 +139,7 @@ export const lander: LanderContent = {
       {
         company: "Bodego AI",
         href: LINKS.bodego,
-        role: "CTO",
+        role: "Co-founder & CTO",
         period: "2025 – now",
         about: "The warehouse management system born with AI: purchasing, inventory, retail stores, online stores, marketplaces and reports in one place, all through one conversation.",
         items: [
