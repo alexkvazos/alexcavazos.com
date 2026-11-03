@@ -163,6 +163,6 @@ export const cv: CvContent = {
       items: "CFDI e-invoicing, SPEI reconciliation, Openpay, Mercado Pago",
     },
   ],
-  languages: "Spanish (native) · English (professional)",
+  languages: "Spanish (native) · English (native)",
 }
 
