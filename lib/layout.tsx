@@ -11,7 +11,7 @@ export const rootMetadata: Metadata = {
   applicationName: SITE_NAME,
   authors: [{ name: "Alejandro Cavazos", url: SITE_URL }],
   creator: "Alejandro Cavazos",
-  keywords: ["Alex Cavazos", "Alejandro Cavazos", "technical co-founder", "CTO", "Octagon Labs", "Turboship", "Monterrey"],
+  keywords: ["Alex Cavazos", "Alejandro Cavazos", "technical co-founder", "CTO", "Bodego AI", "Turboship", "Octagon Labs", "Monterrey"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

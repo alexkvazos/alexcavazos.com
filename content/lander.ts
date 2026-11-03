@@ -55,6 +55,7 @@ export const LINKS = {
   eventkit: "https://eventkit.octagonlabs.ai",
   fankit: "https://fankit.io",
   terpa: "https://terpasolutions.com",
+  bodego: "https://bodego.ai",
   octagon: "https://octagonlabs.ai",
   turboship: "https://turboship.mx",
   timbrachat: "https://timbrachat.ai",
@@ -79,7 +80,7 @@ export const lander: LanderContent = {
   meta: {
     title: "Alex Cavazos — I build software, and the agents that help run it",
     description:
-      "Co-founder and CTO at Octagon Labs and Turboship, in Monterrey, Mexico. I design, build and run software products end to end.",
+      "CTO at Bodego AI, co-founder and CTO at Turboship and Octagon Labs, in Monterrey, Mexico. I design, build and run software products end to end.",
   },
   ui: {
     skipToContent: "Skip to content",
@@ -96,6 +97,11 @@ export const lander: LanderContent = {
         tool: "Read",
         args: "content/work.md",
         output: [
+          "bodego/",
+          "├─ inventory",
+          "├─ stores",
+          "└─ assistant",
+          "turboship",
           "octagon-labs/",
           "├─ hq",
           "├─ sales-agents",
@@ -103,7 +109,6 @@ export const lander: LanderContent = {
           "├─ eventkit",
           "├─ fankit",
           "└─ timbra-chat",
-          "turboship",
           "terpa/",
           "└─ terminal-platform",
         ],
@@ -119,7 +124,7 @@ export const lander: LanderContent = {
     name: "Alex Cavazos",
     headline: "I build software, and the agents that help run it.",
     lines: [
-      "Co-founder and CTO at Octagon Labs and Turboship.",
+      "CTO at Bodego AI. Co-founder and CTO at Turboship and Octagon Labs.",
     ],
     links: [
       { label: "cv", href: "/cv" },
@@ -131,6 +136,42 @@ export const lander: LanderContent = {
   work: {
     cmd: "cat work",
     companies: [
+      {
+        company: "Bodego AI",
+        href: LINKS.bodego,
+        role: "CTO",
+        period: "2025 – now",
+        about: "The warehouse management system born with AI: purchasing, inventory, retail stores, online stores, marketplaces and reports in one place, all through one conversation.",
+        items: [
+          {
+            text: "Orders from every channel (point of sale, online store, WhatsApp, B2B catalogs, marketplaces) with stock across several warehouses.",
+          },
+          {
+            text: "An AI assistant that works on the business's own data, also available as a connector for ChatGPT, Claude, Gemini and Grok.",
+          },
+          {
+            text: "Shipping through Turboship's carrier network, plus CFDI e-invoicing and Mercado Pago.",
+          },
+        ],
+      },
+      {
+        company: "Turboship",
+        href: LINKS.turboship,
+        role: "Co-founder & CTO",
+        period: "2023 – now",
+        about: "A white-label shipping platform for Mexico.",
+        items: [
+          {
+            text: "Lets anyone start a shipping business under their own brand, domain and rates, reselling labels from 13 carriers and 14 aggregators without a fleet or software of their own.",
+          },
+          {
+            text: "Each reseller runs its own isolated instance: quotes, labels and tracking, prepaid balances funded over SPEI, and CFDI e-invoicing.",
+          },
+          {
+            text: "From July 2025 to July 2026 the network processed **about 1.6M shipments** for **852 businesses** through **9 resellers**.",
+          },
+        ],
+      },
       {
         company: "Octagon Labs",
         href: LINKS.octagon,
@@ -164,24 +205,6 @@ export const lander: LanderContent = {
             name: "Timbra Chat",
             href: LINKS.timbrachat,
             text: "An agent that issues Mexican tax invoices: it reads the receipt, then fills in the merchant's invoicing site.",
-          },
-        ],
-      },
-      {
-        company: "Turboship",
-        href: LINKS.turboship,
-        role: "Co-founder & CTO",
-        period: "2023 – now",
-        about: "A white-label shipping platform for Mexico.",
-        items: [
-          {
-            text: "Lets anyone start a shipping business under their own brand, domain and rates, reselling labels from 13 carriers and 14 aggregators without a fleet or software of their own.",
-          },
-          {
-            text: "Each reseller runs its own isolated instance: quotes, labels and tracking, prepaid balances funded over SPEI, and CFDI e-invoicing.",
-          },
-          {
-            text: "From July 2025 to July 2026 the network processed **about 1.6M shipments** for **852 businesses** through **9 resellers**.",
           },
         ],
       },

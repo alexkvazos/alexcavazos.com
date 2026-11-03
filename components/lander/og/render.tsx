@@ -84,7 +84,7 @@ export async function renderOgImage({ cmd = "whoami", tagline }: { cmd?: string;
           {c.intro.headline.replace(/ (\S+)$/, "\u00a0$1")}
         </div>
         <div style={{ display: "flex", marginTop: 22, fontSize: 26, color: C.muted }}>
-          {tagline ?? "Technical co-founder · Octagon Labs · Turboship"}
+          {tagline ?? "Technical co-founder · Bodego AI · Turboship · Octagon Labs"}
         </div>
       </div>
 

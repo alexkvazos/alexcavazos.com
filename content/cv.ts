@@ -70,16 +70,14 @@ export const cv: CvContent = {
     "Technical co-founder and CTO who designs, builds and operates software products end to end: architecture, infrastructure, payments and Mexican tax compliance, and AI agents in production.",
   experience: [
     {
-      title: "Co-Founder & CTO",
-      company: "Octagon Labs",
-      companyNote: "Studio that builds and operates its own software companies",
+      title: "CTO",
+      company: "Bodego AI",
+      companyNote: "Warehouse management system born with AI",
       location: "Monterrey",
       period: "Jan 2025 – Present",
       bullets: [
-        "Built HQ, the studio's operations console: revenue reporting from each company, a shared lead database and the controls for its AI agents.",
-        "Designed and run autonomous browser agents that find and qualify leads on Google Maps and Facebook: 7,549 leads across Mexico, Canada, Colombia and Brazil.",
-        "Built EventKit (event ticketing with Wallet passes, QR check-in and an Android door scanner), FanKit (Wallet loyalty cards) and Timbra Chat (an agent that issues CFDI invoices from receipts).",
-        "Run the studio's products on self-hosted infrastructure: Postgres, Redis, object storage, Cloudflare Tunnel and self-hosted CI runners, with automatic rollback and daily verified backups.",
+        "Purchasing, inventory across warehouses, point of sale, online stores, B2B catalogs and marketplaces in one system.",
+        "Built an AI assistant that works on each business's own data, also a connector for ChatGPT, Claude, Gemini and Grok.",
       ],
     },
     {
@@ -91,8 +89,19 @@ export const cv: CvContent = {
       bullets: [
         "Built Turboship, a white-label shipping platform integrating 13 carriers and 14 aggregators, deployed as an isolated instance for each reseller under its own brand, domain and rates.",
         "From Jul 2025 to Jul 2026 the network processed ~1.6M shipments for 852 businesses through 9 resellers (~$257.7M MXN billed).",
-        "Owned payments and Mexican tax compliance: SPEI deposits with automated reconciliation, CFDI e-invoicing, Mercado Pago.",
-        "Automated white-label provisioning end to end: a new reseller instance is set up by an AI agent.",
+        "Owned payments and Mexican tax compliance (SPEI reconciliation, CFDI e-invoicing, Mercado Pago); an AI agent provisions each new reseller.",
+      ],
+    },
+    {
+      title: "Co-Founder & CTO",
+      company: "Octagon Labs",
+      companyNote: "Studio that builds and operates its own software companies",
+      location: "Monterrey",
+      period: "Jan 2025 – Present",
+      bullets: [
+        "Built HQ, the studio's operations console: revenue reporting from each company, a shared lead database and the controls for its AI agents.",
+        "Designed and run autonomous browser agents that find and qualify leads on Google Maps and Facebook: 7,549 leads across Mexico, Canada, Colombia and Brazil.",
+        "Built EventKit (event ticketing with Wallet passes, QR check-in and an Android door scanner), FanKit (Wallet loyalty cards) and Timbra Chat (an agent that issues CFDI invoices from receipts).",
       ],
     },
     {
