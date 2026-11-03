@@ -85,14 +85,14 @@ export const cv: CvContent = {
     {
       title: "Co-Founder & CTO",
       company: "Turboship",
-      companyNote: "Shipping software for businesses in Mexico",
+      companyNote: "White-label shipping platform for Mexico",
       location: "Monterrey",
       period: "Nov 2023 – Present",
       bullets: [
-        "Built Turboship Carrier, a multi-tenant shipping platform integrating 18 carriers, deployed as an isolated instance for each white-label reseller.",
+        "Built Turboship, a white-label shipping platform integrating 13 carriers and 14 aggregators, deployed as an isolated instance for each reseller under its own brand, domain and rates.",
         "From Jul 2025 to Jul 2026 the network processed ~1.6M shipments for 852 businesses through 9 resellers (~$257.7M MXN billed).",
         "Owned payments and Mexican tax compliance: SPEI deposits with automated reconciliation, CFDI e-invoicing, Mercado Pago.",
-        "Built Turboship WMS (inventory, point of sale, online stores) as a second product and automated white-label provisioning end to end.",
+        "Automated white-label provisioning end to end: a new reseller instance is set up by an AI agent.",
       ],
     },
     {
